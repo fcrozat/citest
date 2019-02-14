@@ -2,6 +2,10 @@
 
 set -x
 
+set
+
+exit 1
+
 export PYTHONPATH=/usr/share/openSUSE-release-tools
 
 if /usr/bin/osrt-pkglistgen -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --only-release-packages --force; then
