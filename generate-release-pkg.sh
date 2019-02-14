@@ -4,6 +4,7 @@ set -x
 
 set
 
+python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 exit 1
 
 export PYTHONPATH=/usr/share/openSUSE-release-tools
