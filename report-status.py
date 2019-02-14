@@ -56,8 +56,8 @@ def report_pipeline(args, architecture, is_last):
         if state == 'failure':
             state = 'success'
         name = name + ':' + architecture
-    url = os.environ.get('GO_SERVER_URL') + '/tab/build/detail/{}/{}/{}/{}/{}#tab-console'.format(os.environ.get('GO_PIPELINE_NAME'), os.environ.get('GO_PIPELINE_COUNTER'), os.environ.get('GO_STAGE_NAME'), os.environ.get('GO_STAGE_COUNTER'), os.environ.get('GO_JOB_NAME'))
-    xml = check_xml(url, state, name)
+    report_url = os.environ.get('GO_SERVER_URL') + '/tab/build/detail/{}/{}/{}/{}/{}#tab-console'.format(os.environ.get('GO_PIPELINE_NAME'), os.environ.get('GO_PIPELINE_COUNTER'), os.environ.get('GO_STAGE_NAME'), os.environ.get('GO_STAGE_COUNTER'), os.environ.get('GO_JOB_NAME'))
+    xml = check_xml(report_url, state, name)
     try:
         http_POST(url, data=xml)
     except HTTPError:
