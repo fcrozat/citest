@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  Handle.Update.Repos.openSUSE_Factory:
+  Handle.Update.Repos:
     group: Handle.Update.Repos
     timer:
       spec: 0 40 13 ? * *
@@ -20,6 +20,16 @@ pipelines:
           Factory_PowerPC:
             tasks:
              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Factory:PowerPC
+          Leap:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1
+          Leap_ARM:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1:ARM
+          Leap_PowerPC:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1:PowerPC
+
 
 
 
