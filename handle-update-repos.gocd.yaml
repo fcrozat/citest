@@ -13,13 +13,13 @@ pipelines:
         jobs:
           Factory:
             tasks:
-              script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory
+              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory
           Factory_ARM:
             tasks:
-              script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory:ARM
+              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory:ARM
          Factory_PowerPC:
             tasks:
-              script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory:PowerPC
+              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org  handle_update_repos openSUSE:Factory:PowerPC
 
 
 
