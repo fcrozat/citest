@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="115">
+  <server artifactsdir="artifacts" agentAutoRegisterKey="67a257da-e03a-4dfa-82a9-ee081fe19501" webhookSecret="88cdacd5-54ca-4aac-824d-4f2195f65ff9" commandRepositoryLocation="default" serverId="ac36fc98-788d-485f-bb13-f5f6ea538992" tokenGenerationKey="bdb82a33-1285-48e7-a5a0-3b1cab50434e">
+    <backup emailOnSuccess="true" emailOnFailure="true" />
+  </server>
+  <config-repos>
+    <config-repo pluginId="yaml.config.plugin" id="gocd-yaml-config-example">
+      <git url="https://github.com/coolo/citest.git" />
+    </config-repo>
+  </config-repos>
+  <agents>
+  </agents>
+</cruise>
+
