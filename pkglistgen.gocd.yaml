@@ -1,0 +1,65 @@
+format_version: 3
+pipelines:
+  Pkglistgen.openSUSE_Factory:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 40 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory
+          openSUSE_Factory_ARM:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:ARM
+          openSUSE_Factory_PowerPC:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:PowerPC
+          openSUSE_Factory_zSystems:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
+          openSUSE_Leap_15.1:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
+          openSUSE_Leap_15.1_ARM:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:ARM
+          openSUSE_Leap_15.1_PowerPC:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:PowerPC
+  Pkglistgen.openSUSE_Factory_Staging:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory -s staging --force
+            
