@@ -31,19 +31,24 @@ pipelines:
             - repo-checker
             tasks:
             - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
-          openSUSE_Leap_15.1:
-            resources:
-            - repo-checker
+  Update.Repos.Leap:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 0 21 ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Update:
+        jobs:
+          Factory:
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
-          openSUSE_Leap_15.1_ARM:
-            resources:
-            - repo-checker
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Factory
+          Factory_ARM:
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:ARM
-          openSUSE_Leap_15.1_PowerPC:
-            resources:
-            - repo-checker
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Factory:ARM
+          Factory_PowerPC:
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:PowerPC
-            
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Factory:PowerPC
+

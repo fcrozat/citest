@@ -1,0 +1,49 @@
+format_version: 3
+pipelines:
+  Pkglistgen.openSUSE_Leap:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Leap_15.1:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
+          openSUSE_Leap_15.1_ARM:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:ARM
+          openSUSE_Leap_15.1_PowerPC:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:PowerPC
+  Update.Repos.Leap:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 0 21 ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Update:
+        jobs:
+          Leap:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1
+          Leap_ARM:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1:ARM
+          Leap_PowerPC:
+            tasks:
+             - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1:PowerPC
+
