@@ -22,7 +22,7 @@ pipelines:
             tasks:
              - script: |
                  export PYTHONPATH=/usr/share/openSUSE-release-tools
-                 # only wait for it to finish but don't care about the exit
+                 ## only wait for it to finish but don't care about the exit
                  python -u ./rabbit-build.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard || true
     - Update.000product:
         jobs:
