@@ -2,6 +2,7 @@ format_version: 3
 pipelines:
   Pkglistgen.openSUSE_Factory:
     group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
     timer:
       spec: 0 40 * ? * *
       only_on_changes: false
@@ -33,6 +34,7 @@ pipelines:
             - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
   Update.Repos.Factory:
     group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 21 ? * *
       only_on_changes: false

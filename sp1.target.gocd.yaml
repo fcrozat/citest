@@ -2,6 +2,7 @@ format_version: 3
 pipelines:
   Packagelist.Generation:
     group: SLE15.SP1.Target
+    lock_behavior: unlockWhenFinished
     timer:
       spec: 0 17 * ? * *
       only_on_changes: false

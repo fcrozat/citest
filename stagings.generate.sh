@@ -8,6 +8,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:$staging
       STAGING_API: https://api.suse.de
     group: SLE15.SP1.Stagings
+    lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
@@ -56,6 +57,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
 
   Pkglistgen.Factory_Staging.$staging:
     group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
       only_on_changes: false
