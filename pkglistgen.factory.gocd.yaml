@@ -31,7 +31,7 @@ pipelines:
             - repo-checker
             tasks:
             - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
-  Update.Repos.Leap:
+  Update.Repos.Factory:
     group: openSUSE.pkglistgen
     timer:
       spec: 0 0 21 ? * *
