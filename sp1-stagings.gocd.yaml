@@ -16,8 +16,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -48,8 +56,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -80,8 +96,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -112,8 +136,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -144,8 +176,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -176,8 +216,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -208,8 +256,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -240,8 +296,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -272,8 +336,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -304,8 +376,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
@@ -336,8 +416,16 @@ pipelines:
               resources:
                 - repo-checker
               tasks:
-                - exec:
-                    command: ./generate-release-pkg.sh
+                - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                if /usr/bin/osrt-pkglistgen -A  update_and_solve --staging  --only-release-packages --force; then
+                  python ./report-status.py -A  -p  -r standard -s pending
+                else
+                  python ./report-status.py -A  -p  -r standard -s failure
+                  exit 1
+                fi
+
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":

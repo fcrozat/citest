@@ -1,0 +1,257 @@
+format_version: 3
+pipelines:
+
+  Pkglistgen.Factory_Staging.A:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:A --force
+
+  Pkglistgen.Factory_Staging.B:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:B --force
+
+  Pkglistgen.Factory_Staging.C:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:C --force
+
+  Pkglistgen.Factory_Staging.D:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:D --force
+
+  Pkglistgen.Factory_Staging.E:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:E --force
+
+  Pkglistgen.Factory_Staging.F:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:F --force
+
+  Pkglistgen.Factory_Staging.G:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:G --force
+
+  Pkglistgen.Factory_Staging.H:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:H --force
+
+  Pkglistgen.Factory_Staging.I:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:I --force
+
+  Pkglistgen.Factory_Staging.J:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:J --force
+
+  Pkglistgen.Factory_Staging.K:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:K --force
+
+  Pkglistgen.Factory_Staging.L:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:L --force
+
+  Pkglistgen.Factory_Staging.M:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:M --force
+
+  Pkglistgen.Factory_Staging.N:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:N --force
+
+  Pkglistgen.Factory_Staging.O:
+    group: openSUSE.pkglistgen
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - pkglistgen:
+        jobs:
+          openSUSE_Factory:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:O --force

@@ -1,0 +1,41 @@
+format_version: 3
+pipelines:
+  Packagelist.Generation:
+    group: SLE15.SP1.Target
+    timer:
+      spec: 0 17 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Create.Release.Packages:
+        jobs:
+          Run.Pkglistgen:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve -p SUSE:SLE-15-SP1:GA -s target --only-release-packages --force
+    - Expect.Standard.To.Finish:
+        jobs:
+          Check.Build:
+            tasks:
+             - script: |
+                 export PYTHONPATH=/usr/share/openSUSE-release-tools
+                 # only wait for it to finish but don't care about the exit
+                 python -u ./rabbit-build.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard || true
+    - Update.000product:
+        jobs:
+          Run.Pkglistgen:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target
+    - Expect.Images.To.Finish:
+        jobs:
+          Check.Build:
+            tasks:
+            - script: |
+                export PYTHONPATH=/usr/share/openSUSE-release-tools
+                python -u ./rabbit-build.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+
