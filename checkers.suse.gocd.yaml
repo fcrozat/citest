@@ -117,8 +117,6 @@ pipelines:
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 * ? * *
-    environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-leaper
     materials:
       git:
         git: https://github.com/coolo/citest.git
