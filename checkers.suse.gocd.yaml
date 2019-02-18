@@ -39,7 +39,7 @@ pipelines:
           Run:
             timeout: 0
             resources:
-            - staging-bot
+            - leaper
             tasks:
             - script: /usr/bin/osrt-manager_42 -c /etc/openSUSE-release-tools/manager_42/SUSE:SLE-15-SP1:GA.yml
 

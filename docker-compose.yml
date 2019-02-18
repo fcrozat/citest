@@ -20,3 +20,12 @@ services:
       - /home/go:/home/go
     scale: 6
   
+  go-agent3:
+    image: openqapusher/docker-gocd-agent-tumbleweed-release-tools
+    environment:
+      AGENT_AUTO_REGISTER_KEY: '67a257da-e03a-4dfa-82a9-ee081fe19501'
+      GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
+      AGENT_AUTO_REGISTER_RESOURCES: leaper
+    volumes:
+      - /home/go:/home/go
+      - /etc/openSUSE-release-tools/manager_42/:/etc/openSUSE-release-tools/manager_42/
