@@ -91,4 +91,24 @@ pipelines:
             - repo-checker
             tasks:
             - script: /usr/bin/osrt-repo_checker -A https://api.suse.de --debug review
-
+  SLE.Leaper:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-leaper
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - leaper
+            tasks:
+            - script: /usr/bin/osrt-leaper -A http://api.suse.de --verbose --manual-version-updates --manual-maintenance-updates review
