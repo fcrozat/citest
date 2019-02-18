@@ -17,7 +17,7 @@
 # Please file any issues or PRs at https://github.com/gocd/docker-gocd-agent
 ###############################################################################################
 
-FROM registry.opensuse.org/opensuse/tumbleweed
+FROM registry.opensuse.org/opensuse/tumbleweed:latest
 MAINTAINER GoCD <go-cd-dev@googlegroups.com>
 
 LABEL gocd.version="19.1.0" \
@@ -38,6 +38,8 @@ ENV LC_ALL en_US.UTF-8
 ARG UID=1000
 ARG GID=1000
 
+COPY ca-certificates-suse-1.0-5.15.noarch.rpm /
+
 RUN \
 # add mode and permissions for files we added above
   chmod 0755 /usr/local/sbin/tini && \
@@ -49,10 +51,11 @@ RUN \
   groupadd -g ${GID} go && \ 
   cat /etc/os-release && \
   useradd -u ${UID} -g go -d /home/go -m go && \
-  zypper -n ar -r http://download.suse.de/ibs/SUSE:/CA/openSUSE_Tumbleweed/SUSE:CA.repo && \
   zypper -n ar --no-gpgcheck -r http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Factory/openSUSE:Tools.repo && \
   zypper -n ref && \
-  zypper -n install git-core openssh bash unzip curl ca-certificates-suse glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper osc-plugin-staging && \
+  zypper -n install git-core openssh bash unzip curl glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper osc-plugin-staging && \
+  zypper -n install /ca-certificates-suse-1.0-5.15.noarch.rpm && \
+  rm /ca-certificates-suse-1.0-5.15.noarch.rpm && \
 # download the zip file
   curl --fail --location --silent --show-error "https://download.gocd.org/binaries/19.1.0-8469/generic/go-agent-19.1.0-8469.zip" > /tmp/go-agent.zip && \
 # unzip the zip file into /go-agent, after stripping the first path prefix
