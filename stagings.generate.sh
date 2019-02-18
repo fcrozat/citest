@@ -76,6 +76,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:

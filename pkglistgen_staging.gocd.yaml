@@ -12,6 +12,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -30,6 +31,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -48,6 +50,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -66,6 +69,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -84,6 +88,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -102,6 +107,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -120,6 +126,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -138,6 +145,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -156,6 +164,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -174,6 +183,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -192,6 +202,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -210,6 +221,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -228,6 +240,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -246,6 +259,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -264,6 +278,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval: manual
         jobs:
           openSUSE_Factory:
             resources:
