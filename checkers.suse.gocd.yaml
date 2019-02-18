@@ -112,3 +112,30 @@ pipelines:
             - leaper
             tasks:
             - script: /usr/bin/osrt-leaper -A https://api.suse.de --verbose --manual-version-updates --manual-maintenance-updates review
+  SLE.Staging.Bot.Regular:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 0 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-leaper
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA rebuild
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA list --supersede
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA adi --by-develproject
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA select --non-interactive --merge --try-strategies
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA unselect --cleanup
+            - script: osc -A https://api.suse.de staging -p SUSE:SLE-15-SP1:GA repair --cleanup
+
