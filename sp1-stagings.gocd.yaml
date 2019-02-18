@@ -33,7 +33,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -84,7 +84,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -135,7 +135,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -186,7 +186,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -237,7 +237,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -288,7 +288,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -339,7 +339,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -390,7 +390,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -441,7 +441,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -492,7 +492,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then
@@ -543,7 +543,7 @@ pipelines:
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A  -p  -r standard; then

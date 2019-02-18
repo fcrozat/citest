@@ -36,7 +36,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
               resources:
                 - staging-bot
               tasks:
-                - script |-
+                - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
                     if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
