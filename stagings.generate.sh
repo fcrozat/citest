@@ -23,10 +23,10 @@ cat >> sp1-stagings.gocd.yaml <<EOF
                 - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
-                    if /usr/bin/osrt-pkglistgen -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --only-release-packages --force; then
-                      python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                    if /usr/bin/osrt-pkglistgen -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --only-release-packages --force; then
+                      python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
                     else
-                      python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                      python ./report-status.py -A $\$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                       exit 1
                     fi
 
@@ -39,11 +39,11 @@ cat >> sp1-stagings.gocd.yaml <<EOF
                 - script: |-
                     export PYTHONPATH=/usr/share/openSUSE-release-tools
 
-                    if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+                    if python -u ./rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
                        ## as the build id changed, we update the URL
-                       python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                       python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
                     else
-                       python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                       python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                        exit 1
                     fi
       - "Update.000product":
