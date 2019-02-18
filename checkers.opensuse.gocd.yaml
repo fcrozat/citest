@@ -20,7 +20,7 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker --debug review
+            - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug review
   Project.Only:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
@@ -42,22 +42,22 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Factory
+            - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Factory
           openSUSE_Leap_15_0_Update:
             timeout: 0
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:15.0:Update
+            - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:15.0:Update
           openSUSE_Leap_15_1:
             timeout: 0
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:15.1
+            - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:15.1
           openSUSE_Leap_42_3_Update:
             timeout: 0
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:42.3:Update
+            - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:42.3:Update

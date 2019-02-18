@@ -42,4 +42,25 @@ pipelines:
             - leaper
             tasks:
             - script: /usr/bin/osrt-manager_42 -c /etc/openSUSE-release-tools/manager_42/SUSE:SLE-15-SP1:GA.yml
+  Run.Repochecker:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-repo-checker
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker -A https://api.suse.de --debug review
 
