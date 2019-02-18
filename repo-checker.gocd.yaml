@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
   Run.Repochecker:
-    group: Repo-Checker
+    group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
@@ -23,7 +23,7 @@ pipelines:
             - script: /usr/bin/osrt-repo_checker --debug review
 
   Project.Only:
-    group: Repo-Checker
+    group: openSUSE.checkers
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 * ? * *
