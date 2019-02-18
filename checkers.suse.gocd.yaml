@@ -22,7 +22,7 @@ pipelines:
             tasks:
             - script: /usr/bin/osrt-check_tags_in_requests --verbose --user=sle-changelog-checker --review=accept-onpass --factory=openSUSE.org:openSUSE:Factory review
   Run.Manager42:
-    group: openSUSE.Checkers
+    group: SLE.Checkers
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */30 * ? * *
