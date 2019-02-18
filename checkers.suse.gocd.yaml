@@ -21,4 +21,25 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-check_tags_in_requests --verbose --user=sle-changelog-checker --review=accept-onpass --factory=openSUSE.org:openSUSE:Factory review
+  Run.Manager42:
+    group: openSUSE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */30 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-leaper
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            - script: /usr/bin/osrt-manager_42 -c /etc/openSUSE-release-tools/manager_42/SUSE:SLE-15-SP1:GA.yml
 
