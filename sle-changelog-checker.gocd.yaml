@@ -15,7 +15,7 @@ pipelines:
         approval:
           type: manual
         jobs:
-          Run.Repochecker:
+          Run:
             timeout: 0
             resources:
             - staging-bot
