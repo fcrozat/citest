@@ -42,7 +42,7 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-repo_checker -A https://api.suse.de -debug project_only --post-comments SUSE:SLE-15-SP1:GA
+            - script: /usr/bin/osrt-repo_checker -A https://api.suse.de --debug project_only --post-comments SUSE:SLE-15-SP1:GA
           SLE_12_SP5:
             timeout: 0
             resources:
