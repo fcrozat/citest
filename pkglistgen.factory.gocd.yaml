@@ -11,6 +11,8 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - pkglistgen:
+        approval:
+          type: manual
         jobs:
           openSUSE_Factory:
             resources:
@@ -43,6 +45,8 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - Update:
+        approval:
+          type: manual
         jobs:
           Factory:
             tasks:
