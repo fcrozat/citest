@@ -52,7 +52,7 @@ RUN \
   zypper -n ar -r http://download.suse.de/ibs/SUSE:/CA/openSUSE_Tumbleweed/SUSE:CA.repo && \
   zypper -n ar --no-gpgcheck -r http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Factory/openSUSE:Tools.repo && \
   zypper -n ref && \
-  zypper -n install git-core openssh bash unzip curl ca-certificates-suse glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper && \
+  zypper -n install git-core openssh bash unzip curl ca-certificates-suse glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper osc-plugin-staging && \
 # download the zip file
   curl --fail --location --silent --show-error "https://download.gocd.org/binaries/19.1.0-8469/generic/go-agent-19.1.0-8469.zip" > /tmp/go-agent.zip && \
 # unzip the zip file into /go-agent, after stripping the first path prefix
