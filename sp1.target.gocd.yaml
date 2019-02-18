@@ -31,7 +31,7 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target
+            - script: /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target || true
     - Expect.Images.To.Finish:
         jobs:
           Check.Build:
