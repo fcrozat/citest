@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
   Pkglistgen.openSUSE_Factory:
-    group: openSUSE.pkglistgen
+    group: openSUSE.pkglistgen -d
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 40 * ? * *
@@ -10,7 +10,7 @@ pipelines:
       git:
         git: https://github.com/coolo/citest.git
     stages:
-    - pkglistgen:
+    - pkglistgen -d:
         approval:
           type: manual
         jobs:
@@ -18,24 +18,24 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory
           openSUSE_Factory_ARM:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:ARM
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:ARM
           openSUSE_Factory_PowerPC:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:PowerPC
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:PowerPC
           openSUSE_Factory_zSystems:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory:zSystems
   Update.Repos.Factory:
-    group: openSUSE.pkglistgen
+    group: openSUSE.pkglistgen -d
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 21 ? * *

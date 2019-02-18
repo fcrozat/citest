@@ -1,7 +1,7 @@
 format_version: 3
 pipelines:
   Pkglistgen.openSUSE_Leap:
-    group: openSUSE.pkglistgen
+    group: openSUSE.pkglistgen -d
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 10 * ? * *
@@ -10,7 +10,7 @@ pipelines:
       git:
         git: https://github.com/coolo/citest.git
     stages:
-    - pkglistgen:
+    - pkglistgen -d:
         approval:
           type: manual
         jobs:
@@ -18,19 +18,19 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
           openSUSE_Leap_15.1_ARM:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:ARM
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:ARM
           openSUSE_Leap_15.1_PowerPC:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:PowerPC
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1:PowerPC
   Update.Repos.Leap:
-    group: openSUSE.pkglistgen
+    group: openSUSE.pkglistgen -d
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 21 ? * *
