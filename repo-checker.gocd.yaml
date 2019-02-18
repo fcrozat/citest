@@ -1,0 +1,65 @@
+format_version: 3
+pipelines:
+  Run.Repochecker:
+    group: Repo-Checker
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-repo-checker
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run.Repochecker:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker --debug review
+
+  Project.Only:
+    group: Repo-Checker
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 0 * ? * *
+      only_on_changes: false
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        environment_variables:
+          OSC_CONFIG: /home/go/.oscrc-repo-checker
+        jobs:
+          openSUSE_Factory:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Factory
+          openSUSE_Leap_15_0_Update:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:15.0:Update
+          openSUSE_Leap_15_1:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:15.1
+          openSUSE_Leap_42_3_Update:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-repo_checker --debug project_only --post-comments openSUSE:Leap:42.3:Update
+  
