@@ -30,9 +30,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -71,9 +81,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -112,9 +132,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -153,9 +183,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -194,9 +234,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -235,9 +285,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -276,9 +336,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -317,9 +387,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -358,9 +438,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -399,9 +489,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -440,9 +540,19 @@ pipelines:
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A  -p  -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A  -p  -r standard -s pending
+                    else
+                       python ./report-status.py -A  -p  -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":

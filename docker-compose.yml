@@ -5,9 +5,10 @@ services:
       environment:
         AGENT_AUTO_REGISTER_KEY: '67a257da-e03a-4dfa-82a9-ee081fe19501'
         GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
+        AGENT_AUTO_REGISTER_RESOURCES: staging-bot
       volumes:
         - /home/go:/home/go
-      scale: 10
+      scale: 15
   
   go-agent2:
     image: openqapusher/docker-gocd-agent-tumbleweed-release-tools
@@ -17,5 +18,5 @@ services:
       AGENT_AUTO_REGISTER_RESOURCES: repo-checker
     volumes:
       - /home/go:/home/go
-    scale: 4
+    scale: 6
   

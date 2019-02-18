@@ -33,9 +33,19 @@ cat >> sp1-stagings.gocd.yaml <<EOF
       - "Check.Build.Succeeds":
           jobs:
             "Wait.For.Build":
+              resources:
+                - staging-bot
               tasks:
-                - exec:
-                    command: ./check-build.sh
+                - script |-
+                    export PYTHONPATH=/usr/share/openSUSE-release-tools
+
+                    if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+                       ## as the build id changed, we update the URL
+                       python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                    else
+                       python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                       exit 1
+                    fi
       - "Update.000product":
           jobs:
             "Run.Pkglistgen":
@@ -59,7 +69,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -74,4 +84,3 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
             - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:$staging --force
 EOF
 done
-

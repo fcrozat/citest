@@ -5,7 +5,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -23,7 +23,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -41,7 +41,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -59,7 +59,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -77,7 +77,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -95,7 +95,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -113,7 +113,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -131,7 +131,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -149,7 +149,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -167,7 +167,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -185,7 +185,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -203,7 +203,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -221,7 +221,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -239,7 +239,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -257,7 +257,7 @@ pipelines:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */10 * ? * *
+      spec: 0 */30 * ? * *
       only_on_changes: false
     materials:
       git:
