@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  Run.Repochecker:
+  openSUSE.Repochecker:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
     timer:

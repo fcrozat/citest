@@ -21,7 +21,7 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-check_tags_in_requests --verbose --user=sle-changelog-checker --review=accept-onpass --factory=openSUSE.org:openSUSE:Factory review
-  Run.Manager42:
+  SLE-SP1.Manager42:
     group: SLE.Checkers
     lock_behavior: unlockWhenFinished
     timer:
@@ -42,7 +42,7 @@ pipelines:
             - leaper
             tasks:
             - script: /usr/bin/osrt-manager_42 -c /etc/openSUSE-release-tools/manager_42/SUSE:SLE-15-SP1:GA.yml
-  Run.Repochecker:
+  SLE.Repochecker:
     group: SLE.Checkers
     lock_behavior: unlockWhenFinished
     timer:
