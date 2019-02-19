@@ -1,4 +1,5 @@
-echo 'format_version: 3' > sp1-stagings.gocd.yaml
+echo '---' > sp1-stagings.gocd.yaml
+echo 'format_version: 3' >> sp1-stagings.gocd.yaml
 echo 'pipelines:' >> sp1-stagings.gocd.yaml
 
 cat >>  sp1-stagings.gocd.yaml <<EOF
@@ -27,7 +28,9 @@ cat >> sp1-stagings.gocd.yaml <<EOF
             resources:
               - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve --staging SUSE:SLE-15-SP1:GA:Staging:$staging --only-release-packages --force
+              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+                 --staging SUSE:SLE-15-SP1:GA:Staging:$staging
+                 --only-release-packages --force
 EOF
 done
 
@@ -45,37 +48,33 @@ cat >> sp1-stagings.gocd.yaml <<EOF
         git: https://github.com/coolo/citest.git
     stages:
       - "Check.Build.Succeeds":
-          jobs:
-            "Wait.For.Build":
-              resources:
-                - staging-bot
-              tasks:
-              - script: |-
-                  export PYTHONPATH=/usr/share/openSUSE-release-tools
-                  python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              export PYTHONPATH=/usr/share/openSUSE-release-tools
+              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
 
-                  if python -u ./rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
-                     ## as the build id changed, we update the URL
-                     python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
-                  else
-                     python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
-                     exit 1
-                  fi
+              if python -u ./rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
+                 ## as the build id changed, we update the URL
+                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+              else
+                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                 exit 1
+              fi
       - "Update.000product":
-          jobs:
-            "Run.Pkglistgen":
-              resources:
-                - repo-checker
-              tasks:
-              - script: |-
-                  export PYTHONPATH=/usr/share/openSUSE-release-tools
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              export PYTHONPATH=/usr/share/openSUSE-release-tools
 
-                  if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT; then
-                    python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
-                  else
-                    python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
-                    exit 1
-                  fi
+              if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT; then
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
 EOF
 
 done
