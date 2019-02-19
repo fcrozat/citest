@@ -3,7 +3,7 @@ echo 'format_version: 3' >> sp1-stagings.gocd.yaml
 echo 'pipelines:' >> sp1-stagings.gocd.yaml
 
 cat >>  sp1-stagings.gocd.yaml <<EOF
-  "SLE15.SP1.Stagings.Release.Packages":
+  SLE15.SP1.Stagings.Release.Packages:
     environment_variables:
       OSC_CONFIG: /home/go/.oscrc-staging-bot
     group: SLE15.SP1.Stagings
