@@ -53,7 +53,7 @@ RUN \
   useradd -u ${UID} -g go -d /home/go -m go && \
   zypper -n ar --no-gpgcheck -r http://download.opensuse.org/repositories/openSUSE:/Tools/openSUSE_Factory/openSUSE:Tools.repo && \
   zypper -n ref && \
-  zypper -n install git-core openssh bash unzip curl glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper osc-plugin-staging osc-plugin-check_dups openSUSE-release-tools-staging-bot && \
+  zypper -n install git-core openssh bash unzip curl glibc-locale-base java-1_8_0-openjdk-headless openSUSE-release-tools-repo-checker openSUSE-release-tools-pkglistgen python2-pika openSUSE-release-tools-leaper osc-plugin-staging osc-plugin-check_dups openSUSE-release-tools-staging-bot openSUSE-release-tools-rabbit-openqa && \
   zypper -n install /ca-certificates-suse-1.0-5.15.noarch.rpm && \
   rm /ca-certificates-suse-1.0-5.15.noarch.rpm && \
 # download the zip file

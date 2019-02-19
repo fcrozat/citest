@@ -193,3 +193,23 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-check_source -A https://api.suse.de --verbose --skip-add-reviews --group factory-auto review
+  SLE.openQA:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            # endless loop
+            - script: /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
