@@ -13,15 +13,15 @@ pipelines:
       scripts:
         git: https://github.com/coolo/citest.git
     stages:
-      - Generate.Release.Package:
-        approval:
-          type: manual
-        jobs:
-          SLE.15.SP1.Staging.A:
-            timeout: 0
-            resources:
-              - repo-checker
-            tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
-                  --staging SUSE:SLE-15-SP1:GA:Staging:A
-                  --only-release-packages --force
+    - Generate.Release.Package:
+      approval:
+        type: manual
+      jobs:
+        SLE.15.SP1.Staging.A:
+          timeout: 0
+          resources:
+          - repo-checker
+          tasks:
+          - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              --staging SUSE:SLE-15-SP1:GA:Staging:A
+              --only-release-packages --force
