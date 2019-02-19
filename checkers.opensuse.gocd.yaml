@@ -6,7 +6,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-repo-checker
+      OSC_CONFIG: /home/go/config/oscrc-repo-checker
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -35,7 +35,7 @@ pipelines:
         approval:
           type: manual
         environment_variables:
-          OSC_CONFIG: /home/go/.oscrc-repo-checker
+          OSC_CONFIG: /home/go/config/oscrc-repo-checker
         jobs:
           openSUSE_Factory:
             timeout: 0

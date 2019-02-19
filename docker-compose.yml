@@ -9,7 +9,7 @@ services:
       GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: staging-bot
     volumes:
-      - /home/go:/home/go
+      - /home/go-config:/home/go/config
     scale: 15
   
   go-agent2:
@@ -21,7 +21,8 @@ services:
       GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: repo-checker
     volumes:
-      - /home/go:/home/go
+      - /home/go-repository-cache:/home/go/.cache/openSUSE-release-tools/repository-meta/
+      - /home/go-config:/home/go/config
     scale: 6
   
   go-agent3:
@@ -33,5 +34,6 @@ services:
       GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: leaper
     volumes:
-      - /home/go:/home/go
+      - /home/go-config:/home/go/config
       - /etc/openSUSE-release-tools/manager_42/:/etc/openSUSE-release-tools/manager_42/
+

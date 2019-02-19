@@ -5,7 +5,7 @@ echo 'pipelines:' >> sp1-stagings.gocd.yaml
 cat >>  sp1-stagings.gocd.yaml <<EOF
   SLE15.SP1.Stagings.RelPkgs:
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-staging-bot
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     timer:
@@ -40,7 +40,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     environment_variables:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:$staging
       STAGING_API: https://api.suse.de
-      OSC_CONFIG: /home/go/.oscrc-staging-bot
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
@@ -91,7 +91,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-staging-bot
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false

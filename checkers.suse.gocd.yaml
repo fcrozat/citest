@@ -6,7 +6,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-sle-changelog-checker
+      OSC_CONFIG: /home/go/config/oscrc-sle-changelog-checker
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -35,7 +35,7 @@ pipelines:
         approval:
           type: manual
         environment_variables:
-          OSC_CONFIG: /home/go/.oscrc-repo-checker
+          OSC_CONFIG: /home/go/config/oscrc-repo-checker
         jobs:
           SLE_15_SP1:
             timeout: 0
@@ -55,7 +55,7 @@ pipelines:
     timer:
       spec: 0 */30 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-leaper
+      OSC_CONFIG: /home/go/config/oscrc-leaper
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -76,7 +76,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-repo-checker
+      OSC_CONFIG: /home/go/config/oscrc-repo-checker
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -97,7 +97,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-leaper
+      OSC_CONFIG: /home/go/config/oscrc-leaper
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -164,7 +164,7 @@ pipelines:
       git:
         git: https://github.com/coolo/citest.git
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-staging-bot
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
     - Run:
         approval:
@@ -182,7 +182,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-factory-auto
+      OSC_CONFIG: /home/go/config/oscrc-factory-auto
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -203,7 +203,7 @@ pipelines:
     timer:
       spec: 0 */5 * ? * *
     environment_variables:
-      OSC_CONFIG: /home/go/.oscrc-staging-bot
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
         git: https://github.com/coolo/citest.git
