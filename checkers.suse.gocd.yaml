@@ -111,7 +111,7 @@ pipelines:
             resources:
             - leaper
             tasks:
-            - script: /usr/bin/osrt-leaper -A https://api.suse.de --verbose --manual-version-updates --manual-maintenance-updates review
+            - script: /usr/bin/osrt-leaper -A https://api.suse.de --group=leaper --user=leaper --verbose --manual-version-updates --manual-maintenance-updates review
   SLE.Staging.Bot.Regular:
     group: SLE.Checkers
     lock_behavior: unlockWhenFinished
