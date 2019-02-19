@@ -155,3 +155,23 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-staging-report --debug -A https://api.suse.de -p SUSE:SLE-15-SP1:GA
+  SLE.Check.Dups:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */10 * ? * *
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            - script: /usr/bin/osc -A https://api.suse.de check_dups SUSE:SLE-15-SP1:GA
+
