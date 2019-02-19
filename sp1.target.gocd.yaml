@@ -1,6 +1,6 @@
 format_version: 3
 pipelines:
-  Packagelist.Generation:
+  SLE15.SP1.Packagelists:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     timer:
@@ -20,6 +20,8 @@ pipelines:
     - Expect.Standard.To.Finish:
         jobs:
           Check.Build:
+            resources:
+            - staging-bot
             tasks:
              - script: |
                  export PYTHONPATH=/usr/share/openSUSE-release-tools
@@ -35,6 +37,8 @@ pipelines:
     - Expect.Images.To.Finish:
         jobs:
           Check.Build:
+            resources:
+            - staging-bot
             tasks:
             - script: |
                 export PYTHONPATH=/usr/share/openSUSE-release-tools
