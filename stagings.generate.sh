@@ -16,18 +16,18 @@ cat >>  sp1-stagings.gocd.yaml <<EOF
     stages:
       - "Generate.Release.Package":
         approval: manual
-    jobs:
+        jobs:
 EOF
 
 sles_stagings="A B C D E F G H S V Y"
 for staging in $sles_stagings; do
 
 cat >> sp1-stagings.gocd.yaml <<EOF
-      "SLE.15.SP1.Staging.$staging":
-        resources:
-          - repo-checker
-        tasks:
-        - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve --staging SUSE:SLE-15-SP1:GA:Staging:$staging --only-release-packages --force
+          "SLE.15.SP1.Staging.$staging":
+            resources:
+              - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve --staging SUSE:SLE-15-SP1:GA:Staging:$staging --only-release-packages --force
 EOF
 done
 
