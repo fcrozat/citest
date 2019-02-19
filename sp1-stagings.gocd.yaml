@@ -14,84 +14,83 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - Generate.Release.Package:
-        approval:
-          type: manual
+        approval: manual
         jobs:
           "SLE.15.SP1.Staging.A":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:A
                  --only-release-packages --force
           "SLE.15.SP1.Staging.B":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:B
                  --only-release-packages --force
           "SLE.15.SP1.Staging.C":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:C
                  --only-release-packages --force
           "SLE.15.SP1.Staging.D":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:D
                  --only-release-packages --force
           "SLE.15.SP1.Staging.E":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:E
                  --only-release-packages --force
           "SLE.15.SP1.Staging.F":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:F
                  --only-release-packages --force
           "SLE.15.SP1.Staging.G":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:G
                  --only-release-packages --force
           "SLE.15.SP1.Staging.H":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:H
                  --only-release-packages --force
           "SLE.15.SP1.Staging.S":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:S
                  --only-release-packages --force
           "SLE.15.SP1.Staging.V":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:V
                  --only-release-packages --force
           "SLE.15.SP1.Staging.Y":
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:Y
                  --only-release-packages --force
   "SLE15.SP1.Staging.A":
@@ -106,6 +105,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -145,6 +145,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -184,6 +185,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -223,6 +225,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -262,6 +265,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -301,6 +305,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -340,6 +345,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -379,6 +385,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -418,6 +425,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -457,6 +465,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -496,6 +505,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:

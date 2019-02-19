@@ -28,7 +28,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
             resources:
               - repo-checker
             tasks:
-              - script: /usr/bin/osrt-pkglistgen -A ibs update_and_solve
+              - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve
                  --staging SUSE:SLE-15-SP1:GA:Staging:$staging
                  --only-release-packages --force
 EOF
