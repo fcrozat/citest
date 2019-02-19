@@ -8,15 +8,16 @@ cat >>  sp1-stagings.gocd.yaml <<EOF
       OSC_CONFIG: /home/go/.oscrc-staging-bot
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
-    materials:
-      scripts:
-        git: https://github.com/coolo/citest.git
     timer:
       spec: 0 */10 * ? * *
       only_on_changes: false
+    materials:
+      scripts:
+        git: https://github.com/coolo/citest.git
     stages:
-      - "Generate.Release.Package":
-        approval: manual
+    - Generate.Release.Package:
+        approval:
+          type: manual
         jobs:
 EOF
 
@@ -47,7 +48,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
       scripts:
         git: https://github.com/coolo/citest.git
     stages:
-      - "Check.Build.Succeeds":
+    - "Check.Build.Succeeds":
         resources:
           - staging-bot
         tasks:
@@ -62,7 +63,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
                  python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
-      - "Update.000product":
+    - "Update.000product":
         resources:
           - repo-checker
         tasks:
