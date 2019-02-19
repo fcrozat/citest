@@ -30,12 +30,11 @@ pipelines:
     materials:
       git:
         git: https://github.com/coolo/citest.git
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-repo-checker
     stages:
     - Run:
-        approval:
-          type: manual
-        environment_variables:
-          OSC_CONFIG: /home/go/config/oscrc-repo-checker
+        approval: manual
         jobs:
           SLE_15_SP1:
             timeout: 0
@@ -61,8 +60,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - Run:
-        approval:
-          type: manual
+        approval: manual
         jobs:
           Run:
             timeout: 0
@@ -82,8 +80,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - Run:
-        approval:
-          type: manual
+        approval: manual
         jobs:
           Run:
             timeout: 0
@@ -103,8 +100,7 @@ pipelines:
         git: https://github.com/coolo/citest.git
     stages:
     - Run:
-        approval:
-          type: manual
+        approval: manual
         jobs:
           Run:
             timeout: 0
@@ -117,6 +113,8 @@ pipelines:
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 0 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -141,6 +139,8 @@ pipelines:
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */3 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
         git: https://github.com/coolo/citest.git
