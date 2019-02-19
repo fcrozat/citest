@@ -163,6 +163,8 @@ pipelines:
     materials:
       git:
         git: https://github.com/coolo/citest.git
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     stages:
     - Run:
         approval:
@@ -179,6 +181,8 @@ pipelines:
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-factory-auto
     materials:
       git:
         git: https://github.com/coolo/citest.git
@@ -198,6 +202,8 @@ pipelines:
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     materials:
       git:
         git: https://github.com/coolo/citest.git
