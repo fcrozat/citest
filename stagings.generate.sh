@@ -16,8 +16,7 @@ cat >>  sp1-stagings.gocd.yaml <<EOF
         git: https://github.com/coolo/citest.git
     stages:
     - Generate.Release.Package:
-        approval:
-          type: manual
+        approval: manual
         jobs:
 EOF
 
@@ -49,6 +48,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
         git: https://github.com/coolo/citest.git
     stages:
     - "Check.Build.Succeeds":
+        approval: manual
         resources:
           - staging-bot
         tasks:
