@@ -4,6 +4,8 @@ pipelines:
   Pkglistgen.Factory_Staging.A:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -23,6 +25,8 @@ pipelines:
   Pkglistgen.Factory_Staging.B:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -42,6 +46,8 @@ pipelines:
   Pkglistgen.Factory_Staging.C:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -61,6 +67,8 @@ pipelines:
   Pkglistgen.Factory_Staging.D:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -80,6 +88,8 @@ pipelines:
   Pkglistgen.Factory_Staging.E:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -99,6 +109,8 @@ pipelines:
   Pkglistgen.Factory_Staging.F:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -118,6 +130,8 @@ pipelines:
   Pkglistgen.Factory_Staging.G:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -137,6 +151,8 @@ pipelines:
   Pkglistgen.Factory_Staging.H:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -156,6 +172,8 @@ pipelines:
   Pkglistgen.Factory_Staging.I:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -175,6 +193,8 @@ pipelines:
   Pkglistgen.Factory_Staging.J:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -194,6 +214,8 @@ pipelines:
   Pkglistgen.Factory_Staging.K:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -213,6 +235,8 @@ pipelines:
   Pkglistgen.Factory_Staging.L:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -232,6 +256,8 @@ pipelines:
   Pkglistgen.Factory_Staging.M:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -251,6 +277,8 @@ pipelines:
   Pkglistgen.Factory_Staging.N:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
@@ -270,6 +298,8 @@ pipelines:
   Pkglistgen.Factory_Staging.O:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/.oscrc-staging-bot
     timer:
       spec: 0 */30 * ? * *
       only_on_changes: false
