@@ -49,7 +49,9 @@ class Listener(PubSubConsumer):
                       'build', project, repository, architecture], {'view': 'status'})
         root = ET.parse(http_GET(url)).getroot()
         if root.get('code') == 'finished':
-            return root.find('buildid').text
+            buildid = root.find('buildid')
+            if buildid is not None:
+                return buildid.text
 
     def check_all_archs(self, project, repository):
         ids = {}
