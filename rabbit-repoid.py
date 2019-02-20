@@ -85,7 +85,7 @@ class Listener(PubSubConsumer):
             ids = self.check_all_archs(body['project'], body['repo'])
             if not ids:
                 return
-            pathname = os.path.join('stagings', body['project'] + '-' + body['repo'] + '.yaml')
+            pathname = body['project'] + '-' + body['repo'] + '.yaml'
             with open(pathname, 'w') as f:
                 for arch in sorted(ids.keys()):
                     f.write('{}: {}\n'.format(arch, ids[arch]))
