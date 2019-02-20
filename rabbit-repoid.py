@@ -63,7 +63,7 @@ class Listener(PubSubConsumer):
                 print('Arch', arch, 'not yet done')
                 return None
             ids[arch] = repoid
-        print('All architectures finished')
+        print('All of {}/{} finished'.format(project, repository))
         return ids
 
     def is_part_of_namespaces(self, project):
@@ -79,7 +79,8 @@ class Listener(PubSubConsumer):
             for state in glob.glob('{}*.yaml'.format(namespace)):
                 state = state.replace('.yaml', '')
                 # split
-                project, repository = state.split('-')
+                print(state)
+                project, repository = state.split('_-_')
                 self.update_repo(project, repository)
         self.push_git('Restart of Repo Monitor')
         self.logger.info('Finished refreshing repoids')
@@ -94,7 +95,7 @@ class Listener(PubSubConsumer):
         ids = self.check_all_archs(project, repository)
         if not ids:
             return
-        pathname = project + '-' + repository + '.yaml'
+        pathname = project + '_-_' + repository + '.yaml'
         with open(pathname, 'w') as f:
             for arch in sorted(ids.keys()):
                 f.write('{}: {}\n'.format(arch, ids[arch]))
