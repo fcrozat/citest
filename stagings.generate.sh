@@ -45,9 +45,6 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
-      scripts:
-        git: https://github.com/coolo/citest.git
-        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -59,6 +56,8 @@ cat >> sp1-stagings.gocd.yaml <<EOF
           - staging-bot
         tasks:
           - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
               python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
 
               if python -u ./scripts/rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
@@ -73,6 +72,9 @@ cat >> sp1-stagings.gocd.yaml <<EOF
           - repo-checker
         tasks:
           - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
               if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
                 python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
               else
