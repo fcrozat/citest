@@ -106,6 +106,10 @@ pipelines:
             tasks:
             # endless loop
             - script: |-
+                git clone https://github.com/openSUSE/osc.git
+                cd osc
+                git checkout python3
+                cd ..
                 git clone http://botmaster.suse.de:4080/git/stagings.git
                 cd stagings
-                ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
+                python3 ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap

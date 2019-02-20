@@ -115,13 +115,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -133,9 +133,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.B":
@@ -160,13 +160,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -178,9 +178,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.C":
@@ -205,13 +205,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -223,9 +223,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.D":
@@ -250,13 +250,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -268,9 +268,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.E":
@@ -295,13 +295,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -313,9 +313,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.F":
@@ -340,13 +340,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -358,9 +358,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.G":
@@ -385,13 +385,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -403,9 +403,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.H":
@@ -430,13 +430,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -448,9 +448,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.S":
@@ -475,13 +475,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -493,9 +493,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.V":
@@ -520,13 +520,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -538,9 +538,9 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.Y":
@@ -565,13 +565,13 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -583,8 +583,8 @@ pipelines:
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi

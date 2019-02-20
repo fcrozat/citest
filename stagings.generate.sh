@@ -58,13 +58,13 @@ cat >> sp1-stagings.gocd.yaml <<EOF
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
 
-              if python -u ./scripts/rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
+              if python -u ./rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               else
-                 python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -76,9 +76,9 @@ cat >> sp1-stagings.gocd.yaml <<EOF
               cd citest
 
               if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
-                python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
               else
-                python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
 EOF
