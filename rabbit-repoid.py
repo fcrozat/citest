@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import argparse
 import datetime
+import glob
 import json
 import logging
 import os.path
@@ -65,14 +66,38 @@ class Listener(PubSubConsumer):
         print('All architectures finished')
         return ids
 
-    def start_consuming(self):
-        self.restart_timer()
-        super(Listener, self).start_consuming()
-
     def is_part_of_namespaces(self, project):
         for namespace in self.namespaces:
             if project.startswith(namespace):
                 return True
+
+    def start_consuming(self):
+        self.restart_timer()
+        # now we are (re-)connected to the bus and need to fetch the
+        # initial state
+        for namespace in self.namespaces:
+            for state in glob.glob('{}*.yaml'.format(namespace)):
+                state = state.replace('.yaml', '')
+                # split
+                project, repository = state.split('-')
+                self.update_repo(project, repository)
+        self.push_git('Restart of Repo Monitor')
+        self.logger.info('Finished refreshing repoids')
+        super(Listener, self).start_consuming()
+
+    def push_git(self, message):
+        os.system('git add .')
+        os.system('git commit -m "{}"'.format(message))
+        os.system('git push')
+
+    def update_repo(self, project, repository):
+        ids = self.check_all_archs(project, repository)
+        if not ids:
+            return
+        pathname = project + '-' + repository + '.yaml'
+        with open(pathname, 'w') as f:
+            for arch in sorted(ids.keys()):
+                f.write('{}: {}\n'.format(arch, ids[arch]))
 
     def on_message(self, unused_channel, method, properties, body):
         try:
@@ -84,16 +109,8 @@ class Listener(PubSubConsumer):
                 return
             self.restart_timer()
             print('Repo finished event: {}/{}/{}'.format(body['project'], body['repo'], body['arch']))
-            ids = self.check_all_archs(body['project'], body['repo'])
-            if not ids:
-                return
-            pathname = body['project'] + '-' + body['repo'] + '.yaml'
-            with open(pathname, 'w') as f:
-                for arch in sorted(ids.keys()):
-                    f.write('{}: {}\n'.format(arch, ids[arch]))
-            os.system('git add .')
-            os.system('git commit -m "Repository finished: {}/{}"'.format(body['project'], body['repo']))
-            os.system('git push')
+            self.update_repo(body['project'], body['repo'])
+            self.push_git('Repository finished: {}/{}'.format(body['project'], body['repo']))
         else:
             self.logger.warning(
                 'unknown rabbitmq message {}'.format(method.routing_key))
