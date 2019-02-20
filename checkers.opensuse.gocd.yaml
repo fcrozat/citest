@@ -108,5 +108,5 @@ pipelines:
                 git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
                 git clone http://botmaster.suse.de:4080/git/stagings.git
                 cd stagings
-                export PYTHONPATH=..:/usr/share/openSUSE-release-tools
+                export PYTHONPATH=../osc:/usr/share/openSUSE-release-tools
                 python3 ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
