@@ -66,7 +66,7 @@ RUN \
   mkdir -p /docker-entrypoint.d && \
   mkdir -p /home/go/.cache/openSUSE-release-tools/repository-meta/ && \
   touch /home/go/.cache/openSUSE-release-tools/.prune && \
-  chown -R ${UID} /home/go/.cache && \
+  chown -R ${UID} /home/go/.cache 
 
 # ensure that logs are printed to console output
 COPY agent-bootstrapper-logback-include.xml agent-launcher-logback-include.xml agent-logback-include.xml /go-agent/config/
