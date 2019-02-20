@@ -219,3 +219,32 @@ pipelines:
             tasks:
             # endless loop
             - script: /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
+  SUSE.Repo.Monitor:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            # endless loop
+            - script: |-
+                git config --global user.email "coolo@suse.de"
+                git config --global user.name "GoCD Repo Monitor"
+                git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
+                git clone http://botmaster.suse.de:4080/git/suse-repos.git
+                cd suse-repos
+                export PYTHONPATH=../osc:/usr/share/openSUSE-release-tools
+                python3 ../rabbit-repoid.py -A https://api.suse.de SUSE:SLE-15-SP1:GA
