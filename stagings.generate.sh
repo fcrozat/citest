@@ -41,11 +41,13 @@ cat >> sp1-stagings.gocd.yaml <<EOF
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:$staging
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -57,14 +59,13 @@ cat >> sp1-stagings.gocd.yaml <<EOF
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -72,12 +73,10 @@ cat >> sp1-stagings.gocd.yaml <<EOF
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
 EOF

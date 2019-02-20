@@ -98,11 +98,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:A
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -114,14 +116,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -129,12 +130,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.B":
@@ -142,11 +141,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:B
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -158,14 +159,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -173,12 +173,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.C":
@@ -186,11 +184,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:C
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -202,14 +202,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -217,12 +216,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.D":
@@ -230,11 +227,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:D
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -246,14 +245,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -261,12 +259,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.E":
@@ -274,11 +270,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:E
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -290,14 +288,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -305,12 +302,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.F":
@@ -318,11 +313,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:F
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -334,14 +331,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -349,12 +345,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.G":
@@ -362,11 +356,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:G
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -378,14 +374,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -393,12 +388,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.H":
@@ -406,11 +399,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:H
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -422,14 +417,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -437,12 +431,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.S":
@@ -450,11 +442,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:S
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -466,14 +460,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -481,12 +474,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.V":
@@ -494,11 +485,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:V
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -510,14 +503,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -525,12 +517,10 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
   "SLE15.SP1.Staging.Y":
@@ -538,11 +528,13 @@ pipelines:
       STAGING_PROJECT: SUSE:SLE-15-SP1:GA:Staging:Y
       STAGING_API: https://api.suse.de
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: SLE15.SP1.Stagings
     lock_behavior: unlockWhenFinished
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+        destination: scripts
       stagings:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
@@ -554,14 +546,13 @@ pipelines:
           - staging-bot
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
 
-              if python -u ./rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
+              if python -u ./scripts/rabbit-build.py -A $STAGING_API -p $STAGING_PROJECT -r standard; then
                  ## as the build id changed, we update the URL
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               else
-                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                 python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                  exit 1
               fi
     - "Update.000product":
@@ -569,11 +560,9 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              export PYTHONPATH=/usr/share/openSUSE-release-tools
-
               if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
               else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                python ./scripts/report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
