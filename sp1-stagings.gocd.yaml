@@ -103,9 +103,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:A-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -143,9 +147,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:B-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -183,9 +191,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:C-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -223,9 +235,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:D-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -263,9 +279,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:E-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -303,9 +323,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:F-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -343,9 +367,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:G-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -383,9 +411,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:H-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -423,9 +455,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:S-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -463,9 +499,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:V-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
@@ -503,9 +543,13 @@ pipelines:
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:Y-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:

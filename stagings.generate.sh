@@ -46,9 +46,13 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     materials:
       scripts:
         git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        destination: stagings
+        whitelist:
+          - SUSE:SLE-15-SP1:GA:Staging:$staging-standard.yaml
     stages:
     - "Check.Build.Succeeds":
-        approval: manual
         resources:
           - staging-bot
         tasks:
