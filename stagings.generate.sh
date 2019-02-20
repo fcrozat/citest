@@ -47,7 +47,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: http://botmaster.suse.de:4080/git/suse-repos.git
         destination: stagings
         whitelist:
           - $repofile
