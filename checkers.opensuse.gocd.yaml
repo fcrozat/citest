@@ -105,6 +105,8 @@ pipelines:
             tasks:
             # endless loop
             - script: |-
+                git config --global user.email "coolo@suse.de"
+                git config --global user.name "GoCD Repo Monitor"
                 git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
                 git clone http://botmaster.suse.de:4080/git/stagings.git
                 cd stagings
