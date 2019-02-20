@@ -15,6 +15,12 @@ from osc.core import http_GET, makeurl
 from osclib.core import target_archs
 from lxml import etree as ET
 
+try:
+    from urllib.error import HTTPError
+except ImportError:
+    # python 2.x
+    from urllib2 import HTTPError
+
 from PubSubConsumer import PubSubConsumer
 
 
@@ -56,7 +62,10 @@ class Listener(PubSubConsumer):
 
     def check_all_archs(self, project, repository):
         ids = {}
-        archs = target_archs(self.apiurl, project, repository)
+        try:
+            archs = target_archs(self.apiurl, project, repository)
+        except HTTPError:
+            return None
         for arch in archs:
             repoid = self.check_arch(project, repository, arch)
             if not repoid:
