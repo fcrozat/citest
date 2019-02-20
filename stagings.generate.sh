@@ -48,7 +48,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - $repofile
     stages:

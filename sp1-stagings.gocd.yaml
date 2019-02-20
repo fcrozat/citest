@@ -104,7 +104,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:A_-_standard.yaml
     stages:
@@ -143,7 +143,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:B_-_standard.yaml
     stages:
@@ -182,7 +182,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:C_-_standard.yaml
     stages:
@@ -221,7 +221,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:D_-_standard.yaml
     stages:
@@ -260,7 +260,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:E_-_standard.yaml
     stages:
@@ -299,7 +299,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:F_-_standard.yaml
     stages:
@@ -338,7 +338,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:G_-_standard.yaml
     stages:
@@ -377,7 +377,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:H_-_standard.yaml
     stages:
@@ -416,7 +416,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:S_-_standard.yaml
     stages:
@@ -455,7 +455,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:V_-_standard.yaml
     stages:
@@ -494,7 +494,7 @@ pipelines:
     materials:
       stagings:
         git: http://botmaster.suse.de:4080/git/suse-repos.git
-        destination: stagings
+        auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA:Staging:Y_-_standard.yaml
     stages:
