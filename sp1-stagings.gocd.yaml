@@ -106,7 +106,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:A-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:A_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -151,7 +151,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:B-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:B_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -196,7 +196,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:C-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:C_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -241,7 +241,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:D-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:D_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -286,7 +286,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:E-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:E_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -331,7 +331,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:F-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:F_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -376,7 +376,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:G-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:G_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -421,7 +421,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:H-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:H_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -466,7 +466,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:S-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:S_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -511,7 +511,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:V-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:V_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:
@@ -556,7 +556,7 @@ pipelines:
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:Y-standard.yaml
+          - SUSE:SLE-15-SP1:GA:Staging:Y_-_standard.yaml
     stages:
     - "Check.Build.Succeeds":
         resources:

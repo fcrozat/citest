@@ -35,6 +35,7 @@ EOF
 done
 
 for staging in $sles_stagings; do
+repofile=SUSE:SLE-15-SP1:GA:Staging:$staging'_-_standard.yaml'
 cat >> sp1-stagings.gocd.yaml <<EOF
   "SLE15.SP1.Staging.$staging":
     environment_variables:
@@ -49,7 +50,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
         git: http://botmaster.suse.de:4080/git/stagings.git
         destination: stagings
         whitelist:
-          - SUSE:SLE-15-SP1:GA:Staging:$staging-standard.yaml
+          - $repofile
     stages:
     - "Check.Build.Succeeds":
         resources:
