@@ -61,3 +61,51 @@ pipelines:
             - repo-checker
             tasks:
             - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:42.3:Update
+  openSUSE.openQA:
+    group: openSUSE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            # endless loop
+            - script: /usr/bin/osrt-rabbit-openqa -A https://api.opensuse.org
+  openSUSE.Repo.Monitor:
+    group: openSUSE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            # endless loop
+            - script: |-
+                git checkout http://botmaster.suse.de:4080/git/stagings.git
+                cd stagings
+                ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
