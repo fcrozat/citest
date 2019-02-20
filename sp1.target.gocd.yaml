@@ -28,7 +28,7 @@ pipelines:
              - script: |
                  export PYTHONPATH=/usr/share/openSUSE-release-tools
                  ## only wait for it to finish but don't care about the exit
-                 python -u ./rabbit-build.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard || true
+                 python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard
     - Update.000product:
         jobs:
           Run.Pkglistgen:
@@ -44,4 +44,5 @@ pipelines:
             tasks:
             - script: |
                 export PYTHONPATH=/usr/share/openSUSE-release-tools
-                python -u ./rabbit-build.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+                python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+                python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images

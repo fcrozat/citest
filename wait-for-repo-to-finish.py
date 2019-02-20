@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/python
 
 from __future__ import print_function
 
@@ -6,20 +6,12 @@ import argparse
 import datetime
 import json
 import logging
-import os
-import sys
 
 import osc
-from osc.core import http_GET, http_POST, makeurl
+from osc.core import http_GET, makeurl
 
 from osclib.core import target_archs
 from lxml import etree as ET
-try:
-    from urllib.error import HTTPError
-except ImportError:
-    # python 2.x
-    from urllib2 import HTTPError
-
 from PubSubConsumer import PubSubConsumer
 
 
@@ -51,18 +43,6 @@ class Listener(PubSubConsumer):
         self.timer_id = self._connection.add_timeout(
             interval, self.still_alive)
 
-    def check_failures(self):
-        url = makeurl(self.apiurl, ['build', self.project, '_result'],
-                      {'view': 'summary', 'repository': self.repository})
-        root = ET.parse(http_GET(url)).getroot()
-        for count in root.findall('.//statuscount'):
-            if int(count.get('count', 0)) == 0:
-                continue
-            if count.get('code') in ['succeeded', 'excluded', 'disabled']:
-                continue
-            print(ET.tostring(count))
-            sys.exit(1)
-
     def still_alive(self):
         if not self.archs:
             self.archs = target_archs(self.apiurl, self.project, self.repository)
@@ -73,7 +53,7 @@ class Listener(PubSubConsumer):
 
         # https://gitlab.com/gitlab-org/gitlab-runner/issues/3144
         # forces us to output something every couple of seconds :(
-        print("Still alive: {}".format(datetime.datetime.now().time()))
+        print('Still alive: {}'.format(datetime.datetime.now().time()))
         self.restart_timer()
 
     def check_arch(self, architecture):
@@ -89,7 +69,7 @@ class Listener(PubSubConsumer):
                 # don't exit early, we want the OBS checks
                 all_done = False
         if all_done:
-            print("Repo is finished")
+            print('Repo is finished')
         return all_done
 
     def start_consuming(self):
@@ -108,7 +88,7 @@ class Listener(PubSubConsumer):
                 return
             self.restart_timer()
             if method.routing_key.endswith('.obs.package.build_fail'):
-                print("Failed build: {}/{}/{}/{}".format(
+                print('Failed build: {}/{}/{}/{}'.format(
                     body['project'], body['repository'], body['arch'], body['package']))
             elif method.routing_key.endswith('.obs.package.build_success'):
                 print("Succeed build: {}/{}/{}/{}".format(
@@ -125,14 +105,13 @@ class Listener(PubSubConsumer):
             if self.check_all_archs():
                 self.stop()
         else:
-            self.logger.warning(
-                "unknown rabbitmq message {}".format(method.routing_key))
+            self.logger.warning('unknown rabbitmq message {}'.format(method.routing_key))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Bot to sync openQA status to OBS')
-    parser.add_argument("--apiurl", '-A', type=str, help='API URL of OBS')
+    parser.add_argument('--apiurl', '-A', type=str, help='API URL of OBS')
     parser.add_argument('-p', '--project', type=str, help='Project to check')
     parser.add_argument('-r', '--repository', type=str,
                         help='Repository to check')
@@ -157,6 +136,5 @@ if __name__ == '__main__':
 
     try:
         listener.run()
-        listener.check_failures()
     except KeyboardInterrupt:
         listener.stop()
