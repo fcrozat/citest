@@ -46,3 +46,14 @@ pipelines:
                 export PYTHONPATH=/usr/share/openSUSE-release-tools
                 python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
                 python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+    - Release.Images.To.Test:
+        approval: manual
+        roles:
+        - SLE
+        environment_variables:
+          OSC_CONFIG: /home/go/config/oscrc-totest-manager
+        resources:
+        - staging-bot
+        tasks:
+        - script: |-
+            echo osc -A https://api.suse.de release SUSE:SLE-15-SP1:GA 000product -m 'release from botmaster.suse.de'
