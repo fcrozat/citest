@@ -20,7 +20,12 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory -s target
+          openSUSE_Factory_Rings:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Factory -s rings
           openSUSE_Factory_ARM:
             resources:
             - repo-checker
@@ -61,4 +66,3 @@ pipelines:
           Factory_PowerPC:
             tasks:
              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Factory:PowerPC
-
