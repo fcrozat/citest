@@ -219,6 +219,7 @@ pipelines:
             tasks:
             # endless loop
             - script: |-
+                sudo zypper ref
                 sudo zypper -n up openSUSE-release-tools-rabbit-openqa
                 /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
   SUSE.Repo.Monitor:
