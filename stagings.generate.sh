@@ -87,7 +87,7 @@ cat >>  pkglistgen_staging.gocd.yaml <<EOF
   Factory.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
@@ -125,7 +125,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -166,7 +166,7 @@ cat >>  pkglistgen_staging.gocd.yaml <<EOF
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
@@ -203,7 +203,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:

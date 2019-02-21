@@ -3,7 +3,7 @@ pipelines:
   Factory.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
@@ -126,7 +126,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -165,7 +165,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -204,7 +204,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -243,7 +243,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -282,7 +282,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -321,7 +321,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -360,7 +360,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -399,7 +399,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -438,7 +438,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -477,7 +477,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -516,7 +516,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -555,7 +555,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -594,7 +594,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -633,7 +633,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -672,7 +672,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Factory.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -708,7 +708,7 @@ pipelines:
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
@@ -761,7 +761,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -800,7 +800,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -839,7 +839,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -878,7 +878,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -917,7 +917,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: openSUSE.pkglistgen
+    group: Leap.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
