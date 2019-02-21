@@ -83,31 +83,83 @@ done
 echo 'format_version: 3' > pkglistgen_staging.gocd.yaml
 echo 'pipelines:' >> pkglistgen_staging.gocd.yaml
 
-for staging in A B C D E F G H I J K L M N O; do
-
-cat >> pkglistgen_staging.gocd.yaml <<EOF
-
-  Pkglistgen.Factory_Staging.$staging:
-    group: openSUSE.pkglistgen
-    lock_behavior: unlockWhenFinished
+cat >>  pkglistgen_staging.gocd.yaml <<EOF
+  Factory.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */30 * ? * *
+      spec: 0 */10 * ? * *
       only_on_changes: false
     materials:
-      git:
+      scripts:
         git: https://github.com/coolo/citest.git
     stages:
-    - pkglistgen:
+    - Generate.Release.Package:
         approval: manual
         jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:$staging --force
 EOF
+
+factory_stagings="A B C D E F G H I J K L M N O"
+for staging in $factory_stagings; do
+
+  cat >> pkglistgen_staging.gocd.yaml <<EOF
+            "Staging.$staging":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:$staging
+                   --only-release-packages --force
+EOF
+done
+
+for staging in $factory_stagings; do
+
+repofile=openSUSE:Factory:Staging:$staging'_-_standard.yaml'
+cat >> pkglistgen_staging.gocd.yaml <<EOF
+  "Factory.Staging.$staging":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:$staging
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - $repofile
+    stages:
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+EOF
+
 done
 
 cat >>  pkglistgen_staging.gocd.yaml <<EOF
@@ -132,7 +184,7 @@ leap_stagings="A B C D E"
 for staging in $leap_stagings; do
 
 cat >> pkglistgen_staging.gocd.yaml <<EOF
-          "Leap.Staging.$staging":
+          "Staging.$staging":
             resources:
               - repo-checker
             tasks:

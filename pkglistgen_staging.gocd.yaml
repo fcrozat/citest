@@ -1,320 +1,710 @@
 format_version: 3
 pipelines:
-
-  Pkglistgen.Factory_Staging.A:
-    group: openSUSE.pkglistgen
-    lock_behavior: unlockWhenFinished
+  Factory.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
-    materials:
-      git:
-        git: https://github.com/coolo/citest.git
-    stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:A --force
-
-  Pkglistgen.Factory_Staging.B:
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     timer:
-      spec: 0 */30 * ? * *
+      spec: 0 */10 * ? * *
       only_on_changes: false
     materials:
-      git:
+      scripts:
         git: https://github.com/coolo/citest.git
     stages:
-    - pkglistgen:
+    - Generate.Release.Package:
         approval: manual
         jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:B --force
-
-  Pkglistgen.Factory_Staging.C:
+            "Staging.A":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:A
+                   --only-release-packages --force
+            "Staging.B":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:B
+                   --only-release-packages --force
+            "Staging.C":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:C
+                   --only-release-packages --force
+            "Staging.D":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:D
+                   --only-release-packages --force
+            "Staging.E":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:E
+                   --only-release-packages --force
+            "Staging.F":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:F
+                   --only-release-packages --force
+            "Staging.G":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:G
+                   --only-release-packages --force
+            "Staging.H":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:H
+                   --only-release-packages --force
+            "Staging.I":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:I
+                   --only-release-packages --force
+            "Staging.J":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:J
+                   --only-release-packages --force
+            "Staging.K":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:K
+                   --only-release-packages --force
+            "Staging.L":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:L
+                   --only-release-packages --force
+            "Staging.M":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:M
+                   --only-release-packages --force
+            "Staging.N":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:N
+                   --only-release-packages --force
+            "Staging.O":
+              resources:
+                - repo-checker
+              tasks:
+                - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                   --staging openSUSE:Factory:Staging:O
+                   --only-release-packages --force
+  "Factory.Staging.A":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:A
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:A_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:C --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.D:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.B":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:B
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:B_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:D --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.E:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.C":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:C
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:C_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:E --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.F:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.D":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:D
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:D_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:F --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.G:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.E":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:E
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:E_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:G --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.H:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.F":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:F
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:F_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:H --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.I:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.G":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:G
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:G_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:I --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.J:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.H":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:H
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:H_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:J --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.K:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.I":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:I
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:I_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:K --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.L:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.J":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:J
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:J_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:L --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.M:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.K":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:K
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:K_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:M --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.N:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.L":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:L
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:L_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:N --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
-  Pkglistgen.Factory_Staging.O:
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.M":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:M
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
     group: openSUSE.pkglistgen
     lock_behavior: unlockWhenFinished
-    environment_variables:
-      OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    timer:
-      spec: 0 */30 * ? * *
-      only_on_changes: false
     materials:
-      git:
-        git: https://github.com/coolo/citest.git
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:M_-_standard.yaml
     stages:
-    - pkglistgen:
-        approval: manual
-        jobs:
-          openSUSE_Factory:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:O --force
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
+
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.N":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:N
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:N_-_standard.yaml
+    stages:
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
+
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+  "Factory.Staging.O":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Factory:Staging:O
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:O_-_standard.yaml
+    stages:
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
+
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
@@ -330,35 +720,35 @@ pipelines:
     - Generate.Release.Package:
         approval: manual
         jobs:
-          "Leap.Staging.A":
+          "Staging.A":
             resources:
               - repo-checker
             tasks:
               - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                  --staging openSUSE:Leap:15.1:Staging:A
                  --only-release-packages --force
-          "Leap.Staging.B":
+          "Staging.B":
             resources:
               - repo-checker
             tasks:
               - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                  --staging openSUSE:Leap:15.1:Staging:B
                  --only-release-packages --force
-          "Leap.Staging.C":
+          "Staging.C":
             resources:
               - repo-checker
             tasks:
               - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                  --staging openSUSE:Leap:15.1:Staging:C
                  --only-release-packages --force
-          "Leap.Staging.D":
+          "Staging.D":
             resources:
               - repo-checker
             tasks:
               - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                  --staging openSUSE:Leap:15.1:Staging:D
                  --only-release-packages --force
-          "Leap.Staging.E":
+          "Staging.E":
             resources:
               - repo-checker
             tasks:
