@@ -5,11 +5,11 @@ services:
     build:
        context: docker-gocd-agent-tumbleweed-release-tools
     environment:
-      AGENT_AUTO_REGISTER_KEY: '67a257da-e03a-4dfa-82a9-ee081fe19501'
-      GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
+      AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
+      GO_SERVER_URL: https://botmaster.suse.de/go
       AGENT_AUTO_REGISTER_RESOURCES: staging-bot
     volumes:
-      - /home/go-config:/home/go/config
+      - /srv/go-config:/home/go/config
     scale: 15
   
   go-agent2:
@@ -17,12 +17,12 @@ services:
     build:
        context: docker-gocd-agent-tumbleweed-release-tools
     environment:
-      AGENT_AUTO_REGISTER_KEY: '67a257da-e03a-4dfa-82a9-ee081fe19501'
-      GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
+      AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
+      GO_SERVER_URL: https://botmaster.suse.de/go
       AGENT_AUTO_REGISTER_RESOURCES: repo-checker
     volumes:
-      - /home/go-repository-cache:/home/go/.cache/openSUSE-release-tools/repository-meta/
-      - /home/go-config:/home/go/config
+      - /srv/go-repository-cache:/home/go/.cache/openSUSE-release-tools/repository-meta/
+      - /srv/go-config:/home/go/config
     scale: 6
   
   go-agent3:
@@ -30,10 +30,10 @@ services:
     build:
        context: docker-gocd-agent-tumbleweed-release-tools
     environment:
-      AGENT_AUTO_REGISTER_KEY: '67a257da-e03a-4dfa-82a9-ee081fe19501'
-      GO_SERVER_URL: https://citest.dyn.cloud.suse.de:8154/go
+      AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
+      GO_SERVER_URL: https://botmaster.suse.de/go
       AGENT_AUTO_REGISTER_RESOURCES: leaper
     volumes:
-      - /home/go-config:/home/go/config
+      - /srv/go-config:/home/go/config
       - /etc/openSUSE-release-tools/manager_42/:/etc/openSUSE-release-tools/manager_42/
 
