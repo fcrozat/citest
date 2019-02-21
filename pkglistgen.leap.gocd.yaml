@@ -20,7 +20,12 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1 -s target
+          openSUSE_Leap_15.1_Ring:
+            resources:
+            - repo-checker
+            tasks:
+            - script: /usr/bin/osrt-pkglistgen -d -A https://api.opensuse.org update_and_solve -p openSUSE:Leap:15.1 -s rings
           openSUSE_Leap_15.1_ARM:
             resources:
             - repo-checker
@@ -56,4 +61,3 @@ pipelines:
           Leap_PowerPC:
             tasks:
              - script: /usr/bin/osrt-pkglistgen --apiurl https://api.opensuse.org handle_update_repos openSUSE:Leap:15.1:PowerPC
-

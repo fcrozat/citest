@@ -109,3 +109,81 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
             - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve --staging openSUSE:Factory:Staging:$staging --force
 EOF
 done
+
+cat >>  pkglistgen_staging.gocd.yaml <<EOF
+  SLE15.SP1.Stagings.RelPkgs:
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */10 * ? * *
+      only_on_changes: false
+    materials:
+      scripts:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Generate.Release.Package:
+        approval: manual
+        jobs:
+EOF
+
+leap_stagings="A B C D E"
+for staging in $leap_stagings; do
+
+cat >> pkglistgen_staging.gocd.yaml <<EOF
+          "Leap.Staging.$staging":
+            resources:
+              - repo-checker
+            tasks:
+              - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
+                 --staging openSUSE:Leap:15.1:Staging:$staging
+                 --only-release-packages --force
+EOF
+done
+
+for staging in $leap_stagings; do
+repofile=openSUSE:Leap:15.1:Staging:$staging'_-_standard.yaml'
+cat >> pkglistgen_staging.gocd.yaml <<EOF
+  "Leap.Staging.$staging":
+    environment_variables:
+      STAGING_PROJECT: openSUSE:Leap:15.1:Staging:$staging
+      STAGING_API: https://api.opensuse.org
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+      PYTHONPATH: /usr/share/openSUSE-release-tools
+    group: openSUSE.pkglistgen
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/stagings.git
+        auto_update: true
+        whitelist:
+          - $repofile
+    stages:
+    - "Check.Build.Succeeds":
+        resources:
+          - staging-bot
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
+              python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+
+    - "Update.000product":
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/citest.git
+              cd citest
+
+              if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
+              else
+                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
+                exit 1
+              fi
+EOF
+
+done
