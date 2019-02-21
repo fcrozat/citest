@@ -218,7 +218,9 @@ pipelines:
             - staging-bot
             tasks:
             # endless loop
-            - script: /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
+            - script: |-
+              sudo zypper -n up openSUSE-release-tools-rabbit-openqa
+              /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
   SUSE.Repo.Monitor:
     group: Monitors
     lock_behavior: unlockWhenFinished
