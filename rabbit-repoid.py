@@ -48,7 +48,7 @@ class Listener(PubSubConsumer):
 
     def still_alive(self):
         # output something so gocd doesn't consider it stalled
-        self.logger.info('Still alive: {}'.format(datetime.datetime.now().time())
+        self.logger.info('Still alive: {}'.format(datetime.datetime.now().time()))
         self.restart_timer()
 
     def check_arch(self, project, repository, architecture):
