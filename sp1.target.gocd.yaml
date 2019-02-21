@@ -46,6 +46,9 @@ pipelines:
         auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA_-_images.yaml
+      packagelists:
+        pipeline: SLE15.SP1.Package.Lists
+        stage: Update.000product
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
