@@ -18,16 +18,7 @@ pipelines:
         tasks:
         - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve -p SUSE:SLE-15-SP1:GA -s target --only-release-packages --force
 
-    - Expect.Standard.To.Finish:
-        resources:
-        - staging-bot
-        tasks:
-         - script: |
-             export PYTHONPATH=/usr/share/openSUSE-release-tools
-             ## only wait for it to finish but don't care about the exit
-             python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard
-             
-  SLE15.SP1.Product:
+  SLE15.SP1.Package.Lists:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     materials:
@@ -36,6 +27,8 @@ pipelines:
         auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA_-_standard.yaml
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
     - Update.000product:
         resources:
@@ -44,16 +37,25 @@ pipelines:
         - script: |-
             /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target || true
 
+  SLE15.SP1.Images:
+    group: SLE15.SP1.Target
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/suse-repos.git
+        auto_update: true
+        whitelist:
+          - SUSE:SLE-15-SP1:GA_-_images.yaml
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    stages:
     - Expect.Images.To.Finish:
-        jobs:
-          Check.Build:
-            resources:
-            - staging-bot
-            tasks:
-            - script: |
-                export PYTHONPATH=/usr/share/openSUSE-release-tools
-                python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
-                python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+        resources:
+        - staging-bot
+        tasks:
+        - script: |
+            export PYTHONPATH=/usr/share/openSUSE-release-tools
+            python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
 
     - Release.Images.To.Test:
         approval: manual
