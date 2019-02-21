@@ -24,7 +24,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/suse-repos.git
+        git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA_-_standard.yaml
@@ -43,7 +43,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/suse-repos.git
+        git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
           - SUSE:SLE-15-SP1:GA_-_images.yaml

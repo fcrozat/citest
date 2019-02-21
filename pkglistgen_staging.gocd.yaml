@@ -130,7 +130,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:A_-_standard.yaml
@@ -169,7 +169,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:B_-_standard.yaml
@@ -208,7 +208,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:C_-_standard.yaml
@@ -247,7 +247,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:D_-_standard.yaml
@@ -286,7 +286,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:E_-_standard.yaml
@@ -325,7 +325,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:F_-_standard.yaml
@@ -364,7 +364,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:G_-_standard.yaml
@@ -403,7 +403,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:H_-_standard.yaml
@@ -442,7 +442,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:I_-_standard.yaml
@@ -481,7 +481,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:J_-_standard.yaml
@@ -520,7 +520,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:K_-_standard.yaml
@@ -559,7 +559,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:L_-_standard.yaml
@@ -598,7 +598,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:M_-_standard.yaml
@@ -637,7 +637,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:N_-_standard.yaml
@@ -676,7 +676,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Factory:Staging:O_-_standard.yaml
@@ -765,7 +765,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Leap:15.1:Staging:A_-_standard.yaml
@@ -804,7 +804,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Leap:15.1:Staging:B_-_standard.yaml
@@ -843,7 +843,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Leap:15.1:Staging:C_-_standard.yaml
@@ -882,7 +882,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Leap:15.1:Staging:D_-_standard.yaml
@@ -921,7 +921,7 @@ pipelines:
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - openSUSE:Leap:15.1:Staging:E_-_standard.yaml

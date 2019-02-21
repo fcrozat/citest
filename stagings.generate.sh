@@ -47,7 +47,7 @@ cat >> sp1-stagings.gocd.yaml <<EOF
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/suse-repos.git
+        git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
           - $repofile
@@ -129,7 +129,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - $repofile
@@ -207,7 +207,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
-        git: http://botmaster.suse.de:4080/git/stagings.git
+        git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
         whitelist:
           - $repofile
