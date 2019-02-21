@@ -220,7 +220,7 @@ pipelines:
             # endless loop
             - script: |-
                 sudo zypper ref
-                sudo zypper -n up openSUSE-release-tools-rabbit-openqa
+                sudo zypper -n up openSUSE-release-tools
                 /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
   SUSE.Repo.Monitor:
     group: Monitors
