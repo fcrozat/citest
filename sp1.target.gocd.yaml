@@ -81,5 +81,5 @@ pipelines:
                 SLES15-SP1-SAP-Azure SLES15-SP1-SAP-Azure-BYOS \
                 SLES15-SP1-SAP-EC2-HVM SLES15-SP1-SAP-EC2-HVM-BYOS \
                 SLES15-SP1-SAP-GCE SLES15-SP1-SAP-GCE-BYOS 000product; do
-              echo osc -A https://api.suse.de release SUSE:SLE-15-SP1:GA $product -m 'release from botmaster.suse.de'
+              osc -A https://api.suse.de release SUSE:SLE-15-SP1:GA $product -m 'release from botmaster.suse.de'
             done
