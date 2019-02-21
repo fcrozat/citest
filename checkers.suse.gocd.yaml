@@ -197,8 +197,8 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-check_source -A https://api.suse.de --verbose --skip-add-reviews --group factory-auto review
-  SLE.openQA:
-    group: SLE.Checkers
+  SUSE.openQA:
+    group: Monitors
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
@@ -220,7 +220,7 @@ pipelines:
             # endless loop
             - script: /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
   SUSE.Repo.Monitor:
-    group: SLE.Checkers
+    group: Monitors
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *

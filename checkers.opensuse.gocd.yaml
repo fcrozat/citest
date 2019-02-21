@@ -62,7 +62,7 @@ pipelines:
             tasks:
             - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:42.3:Update
   openSUSE.openQA:
-    group: openSUSE.Checkers
+    group: Monitors
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
@@ -84,7 +84,7 @@ pipelines:
             # endless loop
             - script: /usr/bin/osrt-rabbit-openqa -A https://api.opensuse.org
   openSUSE.Repo.Monitor:
-    group: openSUSE.Checkers
+    group: Monitors
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */5 * ? * *
@@ -109,6 +109,6 @@ pipelines:
                 git config --global user.name "GoCD Repo Monitor"
                 git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
                 git clone git://botmaster.suse.de/opensuse-repos.git
-                cd stagings
+                cd opensuse-repos
                 export PYTHONPATH=../osc:/usr/share/openSUSE-release-tools
                 python3 ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
