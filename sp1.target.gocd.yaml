@@ -13,6 +13,7 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
     - Create.Release.Packages:
+        approval: manual
         resources:
         - repo-checker
         tasks:
