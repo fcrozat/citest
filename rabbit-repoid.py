@@ -69,10 +69,10 @@ class Listener(PubSubConsumer):
         for arch in archs:
             repoid = self.check_arch(project, repository, arch)
             if not repoid:
-                self.logger.info('Arch', arch, 'not yet done', file=sys.stderr)
+                self.logger.info('Arch', arch, 'not yet done')
                 return None
             ids[arch] = repoid
-        self.logger.info('All of {}/{} finished'.format(project, repository), file=sys.stderr)
+        self.logger.info('All of {}/{} finished'.format(project, repository))
         return ids
 
     def is_part_of_namespaces(self, project):
