@@ -69,7 +69,7 @@ class Listener(PubSubConsumer):
         for arch in archs:
             repoid = self.check_arch(project, repository, arch)
             if not repoid:
-                self.logger.info('Arch {} not yet done'.format(arch))
+                self.logger.info('{}/{}/{} not yet done'.format(project, repository,arch))
                 return None
             ids[arch] = repoid
         self.logger.info('All of {}/{} finished'.format(project, repository))
