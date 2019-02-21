@@ -1,10 +1,10 @@
 format_version: 3
 pipelines:
-  SLE15.SP1.Packagelists:
+  SLE15.SP1.RelPkgs:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 17 * ? * *
+      spec: 0 10 * ? * *
       only_on_changes: false
     materials:
       git:
@@ -13,29 +13,37 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
     - Create.Release.Packages:
-        jobs:
-          Run.Pkglistgen:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve -p SUSE:SLE-15-SP1:GA -s target --only-release-packages --force
+        resources:
+        - repo-checker
+        tasks:
+        - script: /usr/bin/osrt-pkglistgen -A https://api.suse.de update_and_solve -p SUSE:SLE-15-SP1:GA -s target --only-release-packages --force
+
     - Expect.Standard.To.Finish:
-        jobs:
-          Check.Build:
-            resources:
-            - staging-bot
-            tasks:
-             - script: |
-                 export PYTHONPATH=/usr/share/openSUSE-release-tools
-                 ## only wait for it to finish but don't care about the exit
-                 python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard
+        resources:
+        - staging-bot
+        tasks:
+         - script: |
+             export PYTHONPATH=/usr/share/openSUSE-release-tools
+             ## only wait for it to finish but don't care about the exit
+             python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r standard
+             
+  SLE15.SP1.Product:
+    group: SLE15.SP1.Target
+    lock_behavior: unlockWhenFinished
+    materials:
+      stagings:
+        git: http://botmaster.suse.de:4080/git/suse-repos.git
+        auto_update: true
+        whitelist:
+          - SUSE:SLE-15-SP1:GA_-_standard.yaml
+    stages:
     - Update.000product:
-        jobs:
-          Run.Pkglistgen:
-            resources:
-            - repo-checker
-            tasks:
-            - script: /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target || true
+        resources:
+        - repo-checker
+        tasks:
+        - script: |-
+            /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target || true
+
     - Expect.Images.To.Finish:
         jobs:
           Check.Build:
@@ -46,6 +54,7 @@ pipelines:
                 export PYTHONPATH=/usr/share/openSUSE-release-tools
                 python -u ./wait-for-repo-to-finish.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
                 python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
+
     - Release.Images.To.Test:
         approval: manual
         roles:
@@ -56,4 +65,13 @@ pipelines:
         - staging-bot
         tasks:
         - script: |-
-            echo osc -A https://api.suse.de release SUSE:SLE-15-SP1:GA 000product -m 'release from botmaster.suse.de'
+            for product in kiwi-templates-SLES15-JeOS \
+                SLES15-SP1-Azure SLES15-SP1-Azure-BYOS \
+                SLES15-SP1-Azure-Priority SLES15-SP1-Azure-Standard \
+                SLES15-SP1-EC2-ECS-HVM SLES15-SP1-EC2-HVM \
+                SLES15-SP1-EC2-HVM-BYOS SLES15-SP1-GCE SLES15-SP1-GCE-BYOS \
+                SLES15-SP1-SAP-Azure SLES15-SP1-SAP-Azure-BYOS \
+                SLES15-SP1-SAP-EC2-HVM SLES15-SP1-SAP-EC2-HVM-BYOS \
+                SLES15-SP1-SAP-GCE SLES15-SP1-SAP-GCE-BYOS 000product; do
+              echo osc -A https://api.suse.de release SUSE:SLE-15-SP1:GA $product -m 'release from botmaster.suse.de'
+            done
