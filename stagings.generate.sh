@@ -111,7 +111,7 @@ EOF
 done
 
 cat >>  pkglistgen_staging.gocd.yaml <<EOF
-  SLE15.SP1.Stagings.RelPkgs:
+  Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     group: openSUSE.pkglistgen
