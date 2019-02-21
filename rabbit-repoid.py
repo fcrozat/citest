@@ -36,7 +36,7 @@ class Listener(PubSubConsumer):
         return [self.amqp_prefix + '.obs.repo.build_finished']
 
     def restart_timer(self):
-        interval = 120
+        interval = 300
         if self.timer_id:
             self._connection.remove_timeout(self.timer_id)
         else:
@@ -48,7 +48,7 @@ class Listener(PubSubConsumer):
 
     def still_alive(self):
         # output something so gocd doesn't consider it stalled
-        print('Still alive: {}'.format(datetime.datetime.now().time()))
+        self.logger.info('Still alive: {}'.format(datetime.datetime.now().time())
         self.restart_timer()
 
     def check_arch(self, project, repository, architecture):
@@ -69,10 +69,10 @@ class Listener(PubSubConsumer):
         for arch in archs:
             repoid = self.check_arch(project, repository, arch)
             if not repoid:
-                print('Arch', arch, 'not yet done')
+                self.logger.info('Arch', arch, 'not yet done', file=sys.stderr)
                 return None
             ids[arch] = repoid
-        print('All of {}/{} finished'.format(project, repository))
+        self.logger.info('All of {}/{} finished'.format(project, repository), file=sys.stderr)
         return ids
 
     def is_part_of_namespaces(self, project):
@@ -88,7 +88,6 @@ class Listener(PubSubConsumer):
             for state in glob.glob('{}*.yaml'.format(namespace)):
                 state = state.replace('.yaml', '')
                 # split
-                print(state)
                 project, repository = state.split('_-_')
                 self.update_repo(project, repository)
         self.push_git('Restart of Repo Monitor')
@@ -96,9 +95,9 @@ class Listener(PubSubConsumer):
         super(Listener, self).start_consuming()
 
     def push_git(self, message):
-        os.system('git add .')
-        os.system('git commit -m "{}"'.format(message))
-        os.system('git push')
+        os.system('git add . ')
+        os.system('git commit -m "{}" > /dev/null'.format(message))
+        os.system('git push > /dev/null')
 
     def update_repo(self, project, repository):
         ids = self.check_all_archs(project, repository)
@@ -118,7 +117,7 @@ class Listener(PubSubConsumer):
             if not self.is_part_of_namespaces(body['project']):
                 return
             self.restart_timer()
-            print('Repo finished event: {}/{}/{}'.format(body['project'], body['repo'], body['arch']))
+            self.logger.info('Repo finished event: {}/{}/{}'.format(body['project'], body['repo'], body['arch']))
             self.update_repo(body['project'], body['repo'])
             self.push_git('Repository finished: {}/{}'.format(body['project'], body['repo']))
         else:
@@ -146,12 +145,11 @@ if __name__ == '__main__':
     else:
         amqp_prefix = 'opensuse'
 
-    logging.basicConfig(level=logging.WARN)
+    logging.basicConfig(level=logging.INFO)
 
     listener = Listener(apiurl, amqp_prefix, args.namespaces)
 
     try:
         listener.run()
-        listener.check_failures()
     except KeyboardInterrupt:
         listener.stop()
