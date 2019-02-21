@@ -59,6 +59,8 @@ pipelines:
         tasks:
         - script: |
             export PYTHONPATH=/usr/share/openSUSE-release-tools
+            git clone https://github.com/coolo/citest.git
+            cd citest
             python ./verify-repo-built-successful.py -A https://api.suse.de -p SUSE:SLE-15-SP1:GA -r images
 
     - Release.Images.To.Test:
