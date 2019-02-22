@@ -1,5 +1,26 @@
 format_version: 3
 pipelines:
+  openSUSE.Source.Check:
+    group: openSUSE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-factory-auto
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            - script: /usr/bin/osrt-check_source -A https://api.opensuse.org --verbose --skip-add-reviews --group factory-auto review
   openSUSE.Repochecker:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
