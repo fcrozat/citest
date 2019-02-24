@@ -145,6 +145,8 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
     - Repo.Checker:
+        environment_variables:
+          OSC_CONFIG: /home/go/config/oscrc-repo-checker
         resources:
           - repo-checker
         tasks:
