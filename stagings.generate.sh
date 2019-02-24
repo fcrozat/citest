@@ -144,6 +144,16 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
+    - Repo.Checker:
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/coolo/osc-plugin-factory.git
+              cd osc-plugin-factory
+
+              ./repo_checker.py -A \$STAGING_API --debug --verbose --dry staging openSUSE:Factory \$STAGING_PROJECT
+
     - "Update.000product":
         resources:
           - repo-checker
