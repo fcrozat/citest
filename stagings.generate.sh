@@ -152,7 +152,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               git clone https://github.com/coolo/osc-plugin-factory.git -b staging_repochecker --depth 1
               cd osc-plugin-factory
 
-              ./repo_checker.py -A \$STAGING_API --debug --verbose --dry --user repo-checker staging openSUSE:Factory \$STAGING_PROJECT
+              ./repo_checker.py -A \$STAGING_API --debug --verbose --user repo-checker staging openSUSE:Factory \$STAGING_PROJECT
 
     - "Update.000product":
         resources:
