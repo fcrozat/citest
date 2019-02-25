@@ -42,11 +42,6 @@ pipelines:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     materials:
-      stagings:
-        git: git://botmaster.suse.de/suse-repos.git
-        auto_update: true
-        whitelist:
-          - SUSE:SLE-15-SP1:GA_-_*
       packagelists:
         pipeline: SLE15.SP1.Package.Lists
         stage: Update.000product
