@@ -27,7 +27,7 @@ pipelines:
         git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
-          - SUSE:SLE-15-SP1:GA_-_standard.yaml
+          - SUSE:SLE-15-SP1:GA_-_*
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
@@ -46,7 +46,7 @@ pipelines:
         git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
-          - SUSE:SLE-15-SP1:GA_-_images.yaml
+          - SUSE:SLE-15-SP1:GA_-_*
       packagelists:
         pipeline: SLE15.SP1.Package.Lists
         stage: Update.000product
