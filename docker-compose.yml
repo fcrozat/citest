@@ -6,7 +6,7 @@ services:
        context: docker-gocd-agent-tumbleweed-release-tools
     environment:
       AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
-      GO_SERVER_URL: https://botmaster.suse.de/go
+      GO_SERVER_URL: https://botmaster.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: staging-bot
     volumes:
       - /srv/go-config:/home/go/config
@@ -16,7 +16,7 @@ services:
     image: gocd-agent-tumbleweed-release-tools
     environment:
       AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
-      GO_SERVER_URL: https://botmaster.suse.de/go
+      GO_SERVER_URL: https://botmaster.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: repo-checker
     volumes:
       - /srv/go-repository-cache:/home/go/.cache/openSUSE-release-tools/repository-meta/
@@ -27,7 +27,7 @@ services:
     image: gocd-agent-tumbleweed-release-tools
     environment:
       AGENT_AUTO_REGISTER_KEY: '75a7b26d-fc5e-4ccf-88c9-cbf61afc7ebb'
-      GO_SERVER_URL: https://botmaster.suse.de/go
+      GO_SERVER_URL: https://botmaster.suse.de:8154/go
       AGENT_AUTO_REGISTER_RESOURCES: leaper
     volumes:
       - /srv/go-config:/home/go/config
