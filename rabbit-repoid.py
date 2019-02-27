@@ -29,27 +29,10 @@ class Listener(PubSubConsumer):
         super(Listener, self).__init__(amqp_prefix, logging.getLogger(__name__))
         self.apiurl = apiurl
         self.amqp_prefix = amqp_prefix
-        self.timer_id = None
         self.namespaces = namespaces
 
     def routing_keys(self):
         return [self.amqp_prefix + '.obs.repo.build_finished']
-
-    def restart_timer(self):
-        interval = 300
-        if self.timer_id:
-            self._connection.remove_timeout(self.timer_id)
-        else:
-            # check the initial state on first timer hit
-            # so be quick about it
-            interval = 0
-        self.timer_id = self._connection.add_timeout(
-            interval, self.still_alive)
-
-    def still_alive(self):
-        # output something so gocd doesn't consider it stalled
-        self.logger.info('Still alive: {}'.format(datetime.datetime.now().time()))
-        self.restart_timer()
 
     def check_arch(self, project, repository, architecture):
         url = makeurl(self.apiurl, [
@@ -81,7 +64,6 @@ class Listener(PubSubConsumer):
                 return True
 
     def start_consuming(self):
-        self.restart_timer()
         # now we are (re-)connected to the bus and need to fetch the
         # initial state
         for namespace in self.namespaces:
