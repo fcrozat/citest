@@ -171,6 +171,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.B":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:B
@@ -222,6 +229,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.C":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:C
@@ -273,6 +287,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.D":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:D
@@ -324,6 +345,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.E":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:E
@@ -375,6 +403,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.F":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:F
@@ -426,6 +461,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.G":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:G
@@ -477,6 +519,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.H":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:H
@@ -528,6 +577,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.I":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:I
@@ -579,6 +635,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.J":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:J
@@ -630,6 +693,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.K":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:K
@@ -681,6 +751,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.L":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:L
@@ -732,6 +809,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.M":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:M
@@ -783,6 +867,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.N":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:N
@@ -834,6 +925,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   "Factory.Staging.O":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:O
@@ -885,6 +983,13 @@ pipelines:
                 python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot

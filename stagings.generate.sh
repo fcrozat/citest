@@ -170,6 +170,13 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
                 python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
                 exit 1
               fi
+    - "Enable.images.repo":
+       resources:
+         - staging-bot
+       tasks:
+         - script: |-
+             osc api -A \$STAGING_API -X POST "/source/\$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+
 EOF
 
 done
