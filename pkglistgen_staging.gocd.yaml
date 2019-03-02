@@ -176,7 +176,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.B":
     environment_variables:
@@ -234,7 +234,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.C":
     environment_variables:
@@ -292,7 +292,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.D":
     environment_variables:
@@ -350,7 +350,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.E":
     environment_variables:
@@ -408,7 +408,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.F":
     environment_variables:
@@ -466,7 +466,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.G":
     environment_variables:
@@ -524,7 +524,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.H":
     environment_variables:
@@ -582,7 +582,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.I":
     environment_variables:
@@ -640,7 +640,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.J":
     environment_variables:
@@ -698,7 +698,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.K":
     environment_variables:
@@ -756,7 +756,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.L":
     environment_variables:
@@ -814,7 +814,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.M":
     environment_variables:
@@ -872,7 +872,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.N":
     environment_variables:
@@ -930,7 +930,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   "Factory.Staging.O":
     environment_variables:
@@ -988,7 +988,7 @@ pipelines:
          - staging-bot
        tasks:
          - script: |-
-             osc api -A $STAGING_API -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A $STAGING_API api -X POST "/source/$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
   Leap.Stagings.RelPkgs:
     environment_variables:

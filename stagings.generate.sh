@@ -175,7 +175,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
          - staging-bot
        tasks:
          - script: |-
-             osc api -A \$STAGING_API -X POST "/source/\$STAGING_API?cmd=remove_flag&repository=images&flag=build"
+             osc -A \$STAGING_API api -X POST "/source/\$STAGING_API?cmd=remove_flag&repository=images&flag=build"
 
 EOF
 
