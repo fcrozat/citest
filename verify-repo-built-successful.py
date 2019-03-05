@@ -24,7 +24,7 @@ if __name__ == '__main__':
     osc.conf.get_config(override_apiurl=args.apiurl)
     apiurl = osc.conf.config['apiurl']
 
-    logging.basicConfig(level=logging.WARN)
+    logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(__name__)
 
     # first check if repo is finished
@@ -35,6 +35,7 @@ if __name__ == '__main__':
         if root.get('code') == 'finished':
             continue
         logger.error('Repository {}/{}/{} is not yet finished'.format(args.project, args.repository, arch))
+        logger.debug(ET.tostring(root))
         sys.exit(1)
 
     # now check if all packages built fine
