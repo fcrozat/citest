@@ -82,3 +82,30 @@ pipelines:
             - repo-checker
             tasks:
             - script: /usr/bin/osrt-repo_checker -A https://api.opensuse.org --debug project_only --post-comments openSUSE:Leap:42.3:Update
+  Factory.Staging.Bot.Regular:
+    group: Factory.pkglistgen
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 0 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-staging-bot
+    materials:
+      git:
+        git: https://github.com/coolo/citest.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - staging-bot
+            tasks:
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory rebuild
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory list --supersede
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory adi --by-develproject
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory select --non-interactive --merge --try-strategies
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory unselect --cleanup
+            - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory repair --cleanup
+
