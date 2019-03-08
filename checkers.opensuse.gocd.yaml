@@ -62,7 +62,7 @@ pipelines:
             resources:
             - repo-checker
             tasks:
-            - script: ./staging-installcheck.py -A $STAGING_API -p openSUSE:Factory
+            - script: ./staging-installcheck.py -A https://api.opensuse.org -p openSUSE:Factory
   Project.Only:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
