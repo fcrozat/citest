@@ -59,10 +59,10 @@ pipelines:
           type: manual
         jobs:
           Run:
-            timeout: 0
             resources:
             - repo-checker
-            script: ./staging-installcheck.py -A $STAGING_API -p openSUSE:Factory
+            tasks:
+            - script: ./staging-installcheck.py -A $STAGING_API -p openSUSE:Factory
   Project.Only:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
