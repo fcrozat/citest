@@ -55,9 +55,14 @@ pipelines:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
-      git:
+      scripts:
         git: https://github.com/coolo/osc-plugin-factory.git
         branch: add_repoid_monitor
+        destination: scripts
+      osc:
+        git: https://github.com/openSUSE/osc.git
+        branch: python3
+        destination: osc
     stages:
     - Run:
         approval:
@@ -72,11 +77,11 @@ pipelines:
             - script: |-
                 git config --global user.email "coolo@suse.de"
                 git config --global user.name "GoCD Repo Monitor"
-                git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
                 git clone git://botmaster.suse.de/suse-repos.git
                 cd suse-repos
+                ls -l
                 export PYTHONPATH=../osc:/usr/share/openSUSE-release-tools
-                python3 ../rabbit-repoid.py -A https://api.suse.de SUSE:SLE-15-SP1:GA
+                python3 ../scripts/rabbit-repoid.py -A https://api.suse.de SUSE:SLE-15-SP1:GA
   openSUSE.Repo.Monitor:
     group: Monitors
     lock_behavior: unlockWhenFinished
@@ -85,9 +90,14 @@ pipelines:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
-      git:
+      scripts:
         git: https://github.com/coolo/osc-plugin-factory.git
         branch: add_repoid_monitor
+        destination: scripts
+      osc:
+        git: https://github.com/openSUSE/osc.git
+        branch: python3
+        destination: osc
     stages:
     - Run:
         approval:
@@ -102,8 +112,7 @@ pipelines:
             - script: |-
                 git config --global user.email "coolo@suse.de"
                 git config --global user.name "GoCD Repo Monitor"
-                git clone https://github.com/openSUSE/osc.git --depth 1 -b python3
                 git clone git://botmaster.suse.de/opensuse-repos.git
                 cd opensuse-repos
                 export PYTHONPATH=../osc:/usr/share/openSUSE-release-tools
-                python3 ../rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
+                python3 ../scripts/rabbit-repoid.py -A https://api.opensuse.org openSUSE:Factory openSUSE:Leap
