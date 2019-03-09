@@ -9,7 +9,8 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
-        git: https://github.com/coolo/citest.git
+        git: https://github.com/coolo/osc-plugin-factory.git
+        branch: add_repoid_monitor
     stages:
     - Run:
         approval:
@@ -21,9 +22,7 @@ pipelines:
             - staging-bot
             tasks:
             - script: |-
-                sudo zypper ref
-                sudo zypper -n up openSUSE-release-tools
-                /usr/bin/osrt-rabbit-openqa -A https://api.opensuse.org
+                ./rabbit-openqa.py -A https://api.opensuse.org
   SUSE.openQA:
     group: Monitors
     lock_behavior: unlockWhenFinished
@@ -33,7 +32,8 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
-        git: https://github.com/coolo/citest.git
+        git: https://github.com/coolo/osc-plugin-factory.git
+        branch: add_repoid_monitor
     stages:
     - Run:
         approval:
@@ -46,9 +46,7 @@ pipelines:
             tasks:
             # endless loop
             - script: |-
-                sudo zypper ref
-                sudo zypper -n up openSUSE-release-tools
-                /usr/bin/osrt-rabbit-openqa -A https://api.suse.de
+                ./rabbit-openqa.py -A https://api.suse.de
   SUSE.Repo.Monitor:
     group: Monitors
     lock_behavior: unlockWhenFinished
@@ -58,7 +56,8 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
-        git: https://github.com/coolo/citest.git
+        git: https://github.com/coolo/osc-plugin-factory.git
+        branch: add_repoid_monitor
     stages:
     - Run:
         approval:
@@ -87,7 +86,8 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     materials:
       git:
-        git: https://github.com/coolo/citest.git
+        git: https://github.com/coolo/osc-plugin-factory.git
+        branch: add_repoid_monitor
     stages:
     - Run:
         approval:
