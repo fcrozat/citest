@@ -45,24 +45,29 @@ pipelines:
   Factory.AdiChecker:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
-    timer:
-      spec: 0 */15 * ? * *
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-repo-checker
     materials:
-      git:
+      script:
         git: https://github.com/coolo/osc-plugin-factory.git
         branch: staging_repochecker
+        destination: scripts
+      repos:
+        git: git://botmaster.suse.de/opensuse-repos.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Factory:Staging:adi*.yaml
+        destination: repos
     stages:
     - Run:
-        approval:
-          type: manual
         jobs:
           Run:
             resources:
             - repo-checker
             tasks:
-            - script: ./staging-installcheck.py -A https://api.opensuse.org -p openSUSE:Factory
+            - script: |-
+                cd scripts
+                ./staging-installcheck.py -A https://api.opensuse.org -p openSUSE:Factory
   Project.Only:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
