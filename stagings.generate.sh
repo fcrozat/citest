@@ -101,7 +101,7 @@ cat >>  pkglistgen_staging.gocd.yaml <<EOF
         jobs:
 EOF
 
-factory_stagings="A B C D E F G H I J K L M N O"
+factory_stagings="A B C D E F G H I J K L M N O Gcc7"
 for staging in $factory_stagings; do
 
   cat >> pkglistgen_staging.gocd.yaml <<EOF
