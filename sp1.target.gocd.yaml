@@ -27,7 +27,7 @@ pipelines:
         git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
-          - SUSE:SLE-15-SP1:GA_-_*
+          - SUSE:SLE-15-SP1:GA_-_standard.yaml
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
@@ -36,7 +36,7 @@ pipelines:
         - repo-checker
         tasks:
         - script: |-
-            /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target || true
+            /usr/bin/python /usr/bin/osrt-pkglistgen --apiurl https://api.suse.de --debug update_and_solve -p SUSE:SLE-15-SP1:GA -s target --force || true
 
   SLE15.SP1.Images:
     group: SLE15.SP1.Target
