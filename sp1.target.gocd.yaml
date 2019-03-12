@@ -23,7 +23,7 @@ pipelines:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     materials:
-      stagings:
+      repos:
         git: git://botmaster.suse.de/suse-repos.git
         auto_update: true
         whitelist:
@@ -42,9 +42,11 @@ pipelines:
     group: SLE15.SP1.Target
     lock_behavior: unlockWhenFinished
     materials:
-      packagelists:
-        pipeline: SLE15.SP1.Package.Lists
-        stage: Update.000product
+      repos:
+        git: git://botmaster.suse.de/suse-repos.git
+        auto_update: true
+        whitelist:
+          - SUSE:SLE-15-SP1:GA_-_images.yaml
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
     stages:
