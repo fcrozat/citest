@@ -151,8 +151,8 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/osc-plugin-factory.git -b staging_repochecker --depth 1
-              cd osc-plugin-factory
+              git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
+              cd openSUSE-release-tools
 
               ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Factory -s \$STAGING_PROJECT
 

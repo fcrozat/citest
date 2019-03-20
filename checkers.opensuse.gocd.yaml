@@ -49,8 +49,7 @@ pipelines:
       OSC_CONFIG: /home/go/config/oscrc-repo-checker
     materials:
       script:
-        git: https://github.com/coolo/osc-plugin-factory.git
-        branch: staging_repochecker
+        git: https://github.com/openSUSE/openSUSE-release-tools.git
         destination: scripts
       repos:
         git: git://botmaster.suse.de/opensuse-repos.git
