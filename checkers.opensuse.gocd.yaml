@@ -67,6 +67,31 @@ pipelines:
             - script: |-
                 cd scripts
                 ./staging-installcheck.py -A https://api.opensuse.org -p openSUSE:Factory
+  Leap.AdiChecker:
+    group: openSUSE.Checkers
+    lock_behavior: unlockWhenFinished
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-repo-checker
+    materials:
+      script:
+        git: https://github.com/openSUSE/openSUSE-release-tools.git
+        destination: scripts
+      repos:
+        git: git://botmaster.suse.de/opensuse-repos.git
+        auto_update: true
+        whitelist:
+          - openSUSE:Leap:15.1:Staging:adi*.yaml
+        destination: repos
+    stages:
+    - Run:
+        jobs:
+          Run:
+            resources:
+            - repo-checker
+            tasks:
+            - script: |-
+                cd scripts
+                ./staging-installcheck.py -A https://api.opensuse.org -p openSUSE:Leap:15.1
   Project.Only:
     group: openSUSE.Checkers
     lock_behavior: unlockWhenFinished
@@ -133,4 +158,3 @@ pipelines:
             - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory select --non-interactive --merge --try-strategies
             - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory unselect --cleanup
             - script: osc -A https://api.opensuse.org staging -p openSUSE:Factory repair --cleanup
-
