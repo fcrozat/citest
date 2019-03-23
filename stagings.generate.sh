@@ -241,6 +241,18 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
+    - Repo.Checker:
+        environment_variables:
+          OSC_CONFIG: /home/go/config/oscrc-repo-checker
+        resources:
+          - repo-checker
+        tasks:
+          - script: |-
+              git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
+              cd openSUSE-release-tools
+
+              ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
+
     - "Update.000product":
         resources:
           - repo-checker
