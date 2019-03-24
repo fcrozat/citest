@@ -149,7 +149,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -172,12 +171,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -207,7 +202,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -230,12 +224,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -265,7 +255,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -288,12 +277,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -323,7 +308,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -346,12 +330,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -381,7 +361,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -404,12 +383,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -439,7 +414,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -462,12 +436,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -497,7 +467,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -520,12 +489,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -555,7 +520,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -578,12 +542,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -613,7 +573,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -636,12 +595,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -671,7 +626,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -694,12 +648,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -729,7 +679,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -752,12 +701,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -787,7 +732,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -810,12 +754,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -845,7 +785,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -868,12 +807,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -903,7 +838,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -926,12 +860,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -961,7 +891,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -984,12 +913,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -1019,7 +944,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1042,12 +966,8 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -1127,7 +1047,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1150,12 +1069,7 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.B":
     environment_variables:
       STAGING_PROJECT: openSUSE:Leap:15.1:Staging:B
@@ -1178,7 +1092,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1201,12 +1114,7 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.C":
     environment_variables:
       STAGING_PROJECT: openSUSE:Leap:15.1:Staging:C
@@ -1229,7 +1137,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1252,12 +1159,7 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.D":
     environment_variables:
       STAGING_PROJECT: openSUSE:Leap:15.1:Staging:D
@@ -1280,7 +1182,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1303,12 +1204,7 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.E":
     environment_variables:
       STAGING_PROJECT: openSUSE:Leap:15.1:Staging:E
@@ -1331,7 +1227,6 @@ pipelines:
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A $STAGING_API -p $STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -1354,9 +1249,4 @@ pipelines:
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force; then
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A $STAGING_API -p $STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force

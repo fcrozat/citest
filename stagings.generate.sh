@@ -141,7 +141,6 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -164,12 +163,8 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force
+
     - "Enable.images.repo":
        resources:
          - staging-bot
@@ -238,7 +233,6 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
           - script: |-
               git clone https://github.com/coolo/citest.git
               cd citest
-              python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s pending
               python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
     - Repo.Checker:
@@ -261,12 +255,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               git clone https://github.com/coolo/citest.git
               cd citest
 
-              if /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force; then
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s success
-              else
-                python ./report-status.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard -s failure
-                exit 1
-              fi
+              /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force
 EOF
 
 done
