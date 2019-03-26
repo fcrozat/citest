@@ -201,7 +201,7 @@ pipelines:
     group: SLE.Checkers
     lock_behavior: unlockWhenFinished
     timer:
-      spec: 0 */5 * ? * *
+      spec: 0 */20 * ? * *
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-repo-checker
     materials:
