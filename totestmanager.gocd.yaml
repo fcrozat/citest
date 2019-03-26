@@ -22,6 +22,7 @@ pipelines:
             - staging-bot
             tasks:
             - script: |-
+                install -D /home/go/config/openqa-client.conf /home/go/.config/openqa/client.conf
                 scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory
           openSUSE_Factory_ARM:
             resources:
