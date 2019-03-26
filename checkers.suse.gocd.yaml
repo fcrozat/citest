@@ -197,3 +197,31 @@ pipelines:
             - staging-bot
             tasks:
             - script: /usr/bin/osrt-check_source -A https://api.suse.de --verbose --skip-add-reviews --group factory-auto review
+  SLE15.SP5.InstallCheck:
+    group: SLE.Checkers
+    lock_behavior: unlockWhenFinished
+    timer:
+      spec: 0 */5 * ? * *
+    environment_variables:
+      OSC_CONFIG: /home/go/config/oscrc-repo-checker
+    materials:
+      git:
+        git: https://github.com/openSUSE/openSUSE-release-tools.git
+    stages:
+    - Run:
+        approval:
+          type: manual
+        jobs:
+          Run:
+            timeout: 0
+            resources:
+            - repo-checker
+            tasks:
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s A
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s B
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s C
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s D
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s H
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s S
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s V
+            - script: ./staging-installcheck.py -d -p SUSE:SLE-12-SP5:GA -A https://api.suse.de -s Y
