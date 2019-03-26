@@ -22,58 +22,58 @@ pipelines:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory
           openSUSE_Factory_ARM:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:ARM
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:ARM
           openSUSE_Factory_PowerPC:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:PowerPC
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:PowerPC
           openSUSE_Factory_zSystems:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:zSystems
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Factory:zSystems
           openSUSE_Leap_15_0_Images:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.0:Images
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.0:Images
           openSUSE_Leap_15_1_Images:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:Images
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:Images
           openSUSE_Leap_15_1_ARM_Images:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:ARM:Images
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:ARM:Images
           openSUSE_Leap_15_1:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1
           openSUSE_Leap_15_1_ARM:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:ARM
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:ARM
           openSUSE_Leap_15_1_PowerPC:
             resources:
             - staging-bot
             tasks:
             - script: |-
-                ./totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:PowerPC
+                scripts/totest-manager.py -A https://api.opensuse.org --osc-debug --dry --debug run openSUSE:Leap:15.1:PowerPC
