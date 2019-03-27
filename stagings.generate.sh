@@ -134,28 +134,30 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
         whitelist:
           - $repofile
     stages:
-    - "Check.Build.Succeeds":
-        resources:
-          - staging-bot
-        tasks:
-          - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-              python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+    - Checks:
+        jobs:
+          Check.Build.Succeeds:
+            resources:
+              - staging-bot
+            tasks:
+              - script: |-
+                  git clone https://github.com/coolo/citest.git
+                  cd citest
+                  python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
-    - Repo.Checker:
-        environment_variables:
-          OSC_CONFIG: /home/go/config/oscrc-repo-checker
-        resources:
-          - repo-checker
-        tasks:
-          - script: |-
-              git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
-              cd openSUSE-release-tools
+          Repo.Checker:
+            environment_variables:
+              OSC_CONFIG: /home/go/config/oscrc-repo-checker
+            resources:
+              - repo-checker
+            tasks:
+              - script: |-
+                  git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
+                  cd openSUSE-release-tools
 
-              ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Factory -s \$STAGING_PROJECT
+                  ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
 
-    - "Update.000product":
+    - Update.000product:
         resources:
           - repo-checker
         tasks:
@@ -165,7 +167,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
 
               /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force
 
-    - "Enable.images.repo":
+    - Enable.images.repo:
        resources:
          - staging-bot
        tasks:
@@ -226,26 +228,28 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
         whitelist:
           - $repofile
     stages:
-    - "Check.Build.Succeeds":
-        resources:
-          - staging-bot
-        tasks:
-          - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-              python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+    - Checks:
+        jobs:
+          Check.Build.Succeeds:
+            resources:
+              - staging-bot
+            tasks:
+              - script: |-
+                  git clone https://github.com/coolo/citest.git
+                  cd citest
+                  python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
-    - Repo.Checker:
-        environment_variables:
-          OSC_CONFIG: /home/go/config/oscrc-repo-checker
-        resources:
-          - repo-checker
-        tasks:
-          - script: |-
-              git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
-              cd openSUSE-release-tools
+          Repo.Checker:
+            environment_variables:
+              OSC_CONFIG: /home/go/config/oscrc-repo-checker
+            resources:
+              - repo-checker
+            tasks:
+              - script: |-
+                  git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
+                  cd openSUSE-release-tools
 
-              ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
+                  ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
 
     - "Update.000product":
         resources:
