@@ -133,6 +133,18 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
         auto_update: true
         whitelist:
           - $repofile
+      scripts:
+        git: https://github.com/openSUSE/openSUSE-release-tools.git
+        auto_update: true
+        destination: scripts
+        whitelist:
+          - DO_NOT_TRIGGER
+      citest:
+        git: https://github.com/coolo/citest.git
+        auto_update: true
+        destination: citest
+        whitelist:
+          - DO_NOT_TRIGGER
     stages:
     - Checks:
         jobs:
@@ -141,9 +153,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               - staging-bot
             tasks:
               - script: |-
-                  git clone https://github.com/coolo/citest.git
-                  cd citest
-                  python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+                  python ./citest/verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
           Repo.Checker:
             environment_variables:
@@ -152,10 +162,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               - repo-checker
             tasks:
               - script: |-
-                  git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
-                  cd openSUSE-release-tools
-
-                  ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
+                  ./scripts/staging-installcheck.py -A \$STAGING_API -p openSUSE:Factory -s \$STAGING_PROJECT
 
     - Update.000product:
         resources:
@@ -224,6 +231,18 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
         auto_update: true
         whitelist:
           - $repofile
+      scripts:
+        git: https://github.com/openSUSE/openSUSE-release-tools.git
+        auto_update: true
+        destination: scripts
+        whitelist:
+          - DO_NOT_TRIGGER
+      citest:
+        git: https://github.com/coolo/citest.git
+        auto_update: true
+        destination: citest
+        whitelist:
+          - DO_NOT_TRIGGER
     stages:
     - Checks:
         jobs:
@@ -232,9 +251,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               - staging-bot
             tasks:
               - script: |-
-                  git clone https://github.com/coolo/citest.git
-                  cd citest
-                  python ./verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
+                  python ./citest/verify-repo-built-successful.py -A \$STAGING_API -p \$STAGING_PROJECT -r standard
 
           Repo.Checker:
             environment_variables:
@@ -243,10 +260,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
               - repo-checker
             tasks:
               - script: |-
-                  git clone https://github.com/openSUSE/openSUSE-release-tools.git --depth 1
-                  cd openSUSE-release-tools
-
-                  ./staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
+                  ./scripts/staging-installcheck.py -A \$STAGING_API -p openSUSE:Leap:15.1 -s \$STAGING_PROJECT
 
     - "Update.000product":
         resources:
