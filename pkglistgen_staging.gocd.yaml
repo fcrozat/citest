@@ -170,9 +170,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -225,9 +222,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -280,9 +274,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -335,9 +326,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -390,9 +378,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -445,9 +430,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -500,9 +482,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -555,9 +534,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -610,9 +586,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -665,9 +638,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -720,9 +690,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -775,9 +742,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -830,9 +794,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -885,9 +846,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -940,9 +898,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -995,9 +950,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -1100,9 +1052,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.B":
     environment_variables:
@@ -1147,9 +1096,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.C":
     environment_variables:
@@ -1194,9 +1140,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.D":
     environment_variables:
@@ -1241,9 +1184,6 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
   "Leap.Staging.E":
     environment_variables:
@@ -1288,7 +1228,4 @@ pipelines:
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force

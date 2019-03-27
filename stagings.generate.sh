@@ -162,9 +162,6 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force
 
     - Enable.images.repo:
@@ -256,9 +253,6 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
           - repo-checker
         tasks:
           - script: |-
-              git clone https://github.com/coolo/citest.git
-              cd citest
-
               /usr/bin/osrt-pkglistgen --debug -A \$STAGING_API update_and_solve --staging \$STAGING_PROJECT --force
 EOF
 
