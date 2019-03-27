@@ -131,7 +131,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
       stagings:
         git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
-        destionation: repos
+        destination: repos
         whitelist:
           - $repofile
       scripts:
@@ -230,7 +230,7 @@ cat >> pkglistgen_staging.gocd.yaml <<EOF
       stagings:
         git: git://botmaster.suse.de/opensuse-repos.git
         auto_update: true
-        destionation: repos
+        destination: repos
         whitelist:
           - $repofile
       scripts:
