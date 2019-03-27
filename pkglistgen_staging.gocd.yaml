@@ -127,6 +127,7 @@ pipelines:
                 - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                    --staging openSUSE:Factory:Staging:Gcc7
                    --only-release-packages --force
+
   "Factory.Staging.A":
     environment_variables:
       STAGING_PROJECT: openSUSE:Factory:Staging:A
@@ -1087,6 +1088,7 @@ pipelines:
          - script: |-
              osc -A $STAGING_API api -X POST "/source/$STAGING_PROJECT?cmd=remove_flag&repository=images&flag=build"
 
+
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
@@ -1137,6 +1139,7 @@ pipelines:
               - script: /usr/bin/osrt-pkglistgen -A https://api.opensuse.org update_and_solve
                  --staging openSUSE:Leap:15.1:Staging:E
                  --only-release-packages --force
+
   "Leap.Staging.A":
     environment_variables:
       STAGING_PROJECT: openSUSE:Leap:15.1:Staging:A
@@ -1397,3 +1400,4 @@ pipelines:
         tasks:
           - script: |-
               /usr/bin/osrt-pkglistgen --debug -A $STAGING_API update_and_solve --staging $STAGING_PROJECT --force
+
