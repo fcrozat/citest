@@ -1092,7 +1092,7 @@ pipelines:
   Leap.Stagings.RelPkgs:
     environment_variables:
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     timer:
       spec: 0 */10 * ? * *
@@ -1146,7 +1146,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -1198,7 +1198,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -1250,7 +1250,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -1302,7 +1302,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
@@ -1354,7 +1354,7 @@ pipelines:
       STAGING_API: https://api.opensuse.org
       OSC_CONFIG: /home/go/config/oscrc-staging-bot
       PYTHONPATH: /usr/share/openSUSE-release-tools
-    group: Leap.pkglistgen
+    group: Leap.15.1.pkglistgen
     lock_behavior: unlockWhenFinished
     materials:
       stagings:
