@@ -21,4 +21,4 @@ pipelines:
         tasks:
         - script: |-
             install -D /home/go/config/openqa-client.conf /home/go/.config/openqa/client.conf
-            scripts/totest-manager.py -A https://api.opensuse.org --debug run openSUSE:Factory
+            scripts/totest-manager.py -A https://api.opensuse.org --debug run openSUSE:Leap:15.1
